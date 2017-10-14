@@ -38,9 +38,9 @@ class DefaultController extends FOSRestController
         $numVal = $em->getRepository('JUMAINHealthBundle:Patient')
                 ->findNumChildEnteredByDate($dateValue);
         
-        //$data = array("hello" => "world");
+        $data = array("numValue" => $numVal);
 
-        $view = $this->view($numVal);
+        $view = $this->view($data);
 
         return $this->handleView($view);
     }
@@ -48,12 +48,53 @@ class DefaultController extends FOSRestController
     public function getTotNumChildEnteredTillDateAction($dateValue)
     {
         $em = $this->getDoctrine()->getManager();
-        $numVal = $em->getRepository('JUMAINHealthBundle:Patient')
-                ->findNumChildEnteredByDate($dateValue);
+        $totNumVal = $em->getRepository('JUMAINHealthBundle:Patient')
+                ->findTotNumChildEnteredTillDate($dateValue);
         
-        //$data = array("hello" => "world");
+        $data = array("totValue" => $totNumVal);
 
-        $view = $this->view($numVal);
+        $view = $this->view($data);
+
+        return $this->handleView($view);
+    }
+
+    public function getTotalVaccinatedAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $totVal = $em->getRepository('JUMAINHealthBundle:Patient')
+                ->findTotVaccinated();
+        
+        $data = array("totValue" => $totVal);
+
+        $view = $this->view($data);
+
+        return $this->handleView($view);
+    }
+
+    public function getTotalBudgetSpentAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $totVal = $em->getRepository('JUMAINHealthBundle:Patient')
+                ->findTotVaccinated();
+        
+        $data = array("totBudgetSpent" => $totVal,
+                        "totBudget" => $totVal);
+
+        $view = $this->view($data);
+
+        return $this->handleView($view);
+    }
+
+    public function getTotalTimeElapsedAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $totVal = $em->getRepository('JUMAINHealthBundle:Patient')
+                ->findTotVaccinated();
+        
+        $data = array("totBudgetSpent" => $totVal,
+                        "totBudget" => $totVal);
+
+        $view = $this->view($data);
 
         return $this->handleView($view);
     }

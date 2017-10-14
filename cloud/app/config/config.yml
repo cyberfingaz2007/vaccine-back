@@ -90,8 +90,9 @@ doctrine:
                         is_bundle: false
                dql:
                   datetime_functions:
-                      month: JUMAIN\AdminBundle\Dql\Month
                       year: JUMAIN\AdminBundle\Dql\Year
+                      month: JUMAIN\AdminBundle\Dql\Month
+                      week: JUMAIN\AdminBundle\Dql\Week
                       day: JUMAIN\AdminBundle\Dql\Day
                   numeric_functions:
                       Rand: JUMAIN\AdminBundle\Dql\RandFunction

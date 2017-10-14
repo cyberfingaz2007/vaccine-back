@@ -1,13 +1,12 @@
 jumain_health_homepage:
     path:     /
     defaults: { _controller: JUMAINHealthBundle:Default:index }
+    methods:   [GET]
 
 jumain_health_child_entered_by_date:
     path:     /ChldEntrdByDate/{dateValue}
     defaults: { _controller: JUMAINHealthBundle:Default:getChildEnteredByDate }
     methods:   [GET]
-    requirements:
-        dateValue: \d+
 
 jumain_health_num_child_entered_by_date:
     path:     /NumChldEntrdByDate/{dateValue}
@@ -19,50 +18,17 @@ jumain_health_tot_num_child_entered_till_date:
     defaults: { _controller: JUMAINHealthBundle:Default:getTotNumChildEnteredTillDate }
     methods:   [GET]
 
-jumain_health_homepage:
-    path:     /
-    defaults: { _controller: JUMAINHealthBundle:Default:index }
-
-jumain_health_homepage:
-    path:     /
-    defaults: { _controller: JUMAINHealthBundle:Default:index }
-
-jumain_health_homepage:
-    path:     /
-    defaults: { _controller: JUMAINHealthBundle:Default:index }
-
-jumain_health_homepage:
-    path:     /
-    defaults: { _controller: JUMAINHealthBundle:Default:index }
-
-jumain_consumer_api_musvids_local:
-    path:     /musvids/local
-    defaults: { _controller: JUMAINConsumerApiBundle:Default:getLocalMusVids }
+jumain_health_tot_vacc:
+    path:     /TotVacc
+    defaults: { _controller: JUMAINHealthBundle:Default:getTotalVaccinated }
     methods:   [GET]
 
-jumain_consumer_api_musvids_foreign:
-    path:     /musvids/foreign
-    defaults: { _controller: JUMAINConsumerApiBundle:Default:getForeignMusVids }
+jumain_health_tot_budget_spent:
+    path:     /TotBudgetSpnt
+    defaults: { _controller: JUMAINHealthBundle:Default:getTotalBudgetSpent }
     methods:   [GET]
 
-jumain_consumer_api_trailers_local:
-    path:     /trailers/local
-    defaults: { _controller: JUMAINConsumerApiBundle:Default:getLocalTrailers }
+jumain_health_tot_project_time_elapsed:
+    path:     /TotTimeElapsed
+    defaults: { _controller: JUMAINHealthBundle:Default:getTotalTimeElapsed }
     methods:   [GET]
-
-jumain_consumer_api_trailers_foreign:
-    path:     /trailers/foreign
-    defaults: { _controller: JUMAINConsumerApiBundle:Default:getForeignTrailers }
-    methods:   [GET]
-
-jumain_consumer_api_channels:
-    path:     /channels
-    defaults: { _controller: JUMAINConsumerApiBundle:Default:getChannels }
-    methods:   [GET]
-
-jumain_consumer_api_channel_videos:
-    path:     /channels/{id}/channelvideos
-    defaults: { _controller: JUMAINConsumerApiBundle:Default:getChannelVideos }
-    methods:   [GET]
-    requirements:
-        channelId: \d+

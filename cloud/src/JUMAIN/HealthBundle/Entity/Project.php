@@ -67,6 +67,13 @@ class Project
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="ProjectStrtDate", type="datetime")
+     */
+    private $projectStrtDate;
+
+    /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="CreatedAt", type="datetime")
      */
     private $createdAt;
