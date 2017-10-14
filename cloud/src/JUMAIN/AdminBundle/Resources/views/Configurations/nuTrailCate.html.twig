@@ -1,0 +1,131 @@
+{% if trailEntities is empty %}
+    <p> No category has been entered. Please Click on the Add button above to include new Category. </p>
+{% else %}
+  <table id="mainTrail" class="table table-hover object-show">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Category Name</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in trailEntities %}
+            <tr>
+                <td>{{ e.id }}</td>
+                <td>
+                    {% if e.categoryName is empty %}
+                    {% else %}
+                    {{ e.categoryName }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if e.category is empty %}
+                    {% else %}
+                    {{ e.category }}
+                    {% endif %}
+                </td>
+                <td class="pull-right">
+                  <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                  <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                  <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+{% endif %}
+
+<div id="addTrail" class="panel panel-grey object-hide">
+    <div class="panel-heading">
+        Add Trailer Category</div>
+    <div class="panel-body pan">
+        {{ form_start(formTrailCate) }}
+            {{ form_errors(formTrailCate) }}
+        <div class="form-body pal">
+            <div class="form-group">
+                <div class="input-icon right">
+                    {{ form_errors(formTrailCate.categoryName) }}
+                    <i class="fa fa-user"></i>
+                    {{ form_widget(formTrailCate.categoryName, {'attr': {'class': 'form-control', 'placeholder':'Category Name', 'autofocus':''}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="input-icon right">
+                    {{ form_errors(formTrailCate.category) }}
+                    <i class="fa fa-user"></i>
+                    {{ form_widget(formTrailCate.category, {'attr': {'class': 'form-control', 'placeholder':'Category', 'autofocus':''}}) }}
+                </div>
+            </div>
+        </div>
+        <div class="form-actions text-right pal">
+          <a href="#" class="btn cancel-add-trail">Cancel</a>&nbsp;&nbsp;
+            {{ form_widget(formTrailCate.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
+        {{ form_end(formTrailCate) }}
+    </div>
+</div>
+
+<script>
+$('a#addTrailObjBtn').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check if working");
+  $('#mainTrail').removeClass('object-show');
+  $('#mainTrail').addClass('object-hide');
+  $('#addTrail').removeClass('object-hide');
+  $('#addTrail').addClass('object-show');
+});
+
+$('a.cancel-add-trail').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check cancel if working");
+
+  $('#addTrail').removeClass('object-show');
+  $('#addTrail').addClass('object-hide');
+
+  $('#mainTrail').removeClass('object-hide');
+  $('#mainTrail').addClass('object-show');
+});
+
+$( '#formTrailCate' ).submit(function(e) {
+  //alert( "Handler for .submit() called." );
+  e.preventDefault();
+
+  $this = $(this);
+  $url = $this.attr("action");
+  $('#trail-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+  $.ajax({
+      // the URL for the request
+      url: $url,
+      // whether this is a POST or GET request
+      type: "POST",
+      // the type of data we expect back
+      data: $this.serialize(),
+      // code to run if the request succeeds;
+      // the response is passed to the function
+      success: function (html) {
+          $('#trail-cat').html(html);
+          //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+          //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+      },
+      // code to run if the request fails; the raw request and
+      // status codes are passed to the function
+      error: function (xhr, status, errorThrown) {
+          alert("Sorry, there was a problem!");
+          //console.log( "Error: " + errorThrown );
+          //console.log( "Status: " + status );
+          //console.dir( xhr );
+      },
+      // code to run regardless of success or failure
+      complete: function (xhr, status) {
+          //alert( "Submitted Succesfully" );
+          $('#loading').remove();
+          $('#trail-cat').fadeIn();
+      }
+  });
+});
+</script>

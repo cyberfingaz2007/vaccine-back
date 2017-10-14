@@ -1,0 +1,82 @@
+<?php
+
+namespace JUMAIN\HealthBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MedicalDetail
+ *
+ * @ORM\Table(name="medical_detail")
+ * @ORM\Entity(repositoryClass="JUMAIN\HealthBundle\Repository\MedicalDetailRepository")
+ */
+class MedicalDetail
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="Patient", inversedBy="detail", cascade={"persist"})
+     * @ORM\JoinColumn(name="PatientId", referencedColumnName="id", nullable=true)
+     */
+    private $patient;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="VaccinationStatus", type="string", length=50, nullable=true)
+     */
+    private $vaccinationStatus;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="VaccinationDate", type="datetime", nullable=true)
+     */
+    private $vaccinationDate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="EmployeeName", type="string", length=100, nullable=true)
+     */
+    private $employeeName;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Description", type="text", nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="current", type="boolean", nullable=true)
+     */
+    private $current;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="CreatedAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="UpdatedAt", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+}
+

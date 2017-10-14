@@ -1,0 +1,228 @@
+<div class="row mbl object-show">
+  <div class="col-lg-4">
+    <div class="panel">
+        <a id="addSeasonObjBtn" class="btn btn-green"><i class="fa fa-upload"></i>&nbsp;
+            Add Season</a>
+    </div>
+  </div>
+</div>
+{% if seasonEntities is empty %}
+    <p> No Seasons to display </p>
+{% else %}
+  <table id="seasTable" class="table table-hover object-show">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name of Season:</th>
+        <th>Season Title:</th>
+        <th>Serie Name</th>
+        <th>Number of Episodes</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in seasonEntities %}
+          <tr>
+              <td>{{ e.seasonNum }}</td>
+              <td>
+                  {% if e.seasonName is empty %}
+                  {% else %}
+                  {{ e.seasonName }}
+                  {% endif %}
+              </td>
+              <td>
+                  {% if e.seasonTitle is empty %}
+                  {% else %}
+                  {{ e.seasonTitle }}
+                  {% endif %}
+              </td>
+              <td>
+                  {% if e.serie.serieName is empty %}
+                  {% else %}
+                  {{ e.serie.serieName }}
+                  {% endif %}
+              </td>
+              <td>
+                  {% if e.episodesNumber is empty %}
+                  {% else %}
+                  {{ e.episodesNumber }}
+                  {% endif %}
+              </td>
+              <td class="pull-right">
+                <a class="btn btn-default btn-xs admin-open-episodes" epiLnk="{{ path('jumain_admin_serie_season_episodes', {'seasonId': e.id}) }}"><i class="fa fa-folder-open"></i></a>
+                <!--<a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>-->
+              </td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+<div id="addSeasonObject" class="row mbl center object-hide">
+    <div class="col-lg-4 col-lg-offset-4">
+        <div class="panel panel-grey">
+            <div class="panel-heading">
+                Add Season</div>
+            <div class="panel-body pan">
+                {{ form_start(formAddSeason) }}
+                    {{ form_errors(formAddSeason) }}
+                <div class="form-body pal">
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(formAddSeason.seasonName) }}
+                            <i class="fa fa-user"></i>
+                            {{ form_widget(formAddSeason.seasonName, {'attr': {'class': 'form-control', 'placeholder':'Enter Season Name without spaces', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(formAddSeason.seasonTitle) }}
+                            <i class="fa fa-user"></i>
+                            {{ form_widget(formAddSeason.seasonTitle, {'attr': {'class': 'form-control', 'placeholder':'Enter Season Name with spaces', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(formAddSeason.serie) }}
+                        {{ form_widget(formAddSeason.serie, {'attr': {'class': 'form-control', 'style': 'display: none;', 'autofocus':''}}) }}
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(formAddSeason.seasonNum) }}
+                            <i class="fa fa-user"></i>
+                            {{ form_widget(formAddSeason.seasonNum, {'attr': {'class': 'form-control', 'placeholder':'Enter Season Number', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-actions text-right pal">
+                  <a href="#" class="btn cancel-add-seasons">Cancel</a>&nbsp;&nbsp;
+                    {{ form_widget(formAddSeason.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+                {{ form_end(formAddSeason) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+//For Adding seasons
+$('a#addSeasonObjBtn').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check if working");
+  $('#seasTable').removeClass('object-show');
+  $('#seasTable').addClass('object-hide');
+  $('#addSeasonObject').removeClass('object-hide');
+  $('#addSeasonObject').addClass('object-show');
+});
+
+$('a.cancel-add-seasons').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check cancel if working");
+
+  $('#addSeasonObject').removeClass('object-show');
+  $('#addSeasonObject').addClass('object-hide');
+
+  $('#seasTable').removeClass('object-hide');
+  $('#seasTable').addClass('object-show');
+});
+
+$( '#formAddSeason' ).submit(function(e) {
+  //alert( "Handler for .submit() called." );
+  e.preventDefault();
+
+  $this = $(this);
+  $url = $this.attr("action");
+  $('#addSeasonObject').hide().parent().append('<div id="loading" class="center"><i class="fa fa-cog fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+  $.ajax({
+      // the URL for the request
+      url: $url,
+      // whether this is a POST or GET request
+      type: "POST",
+      // the type of data we expect back
+      data: $this.serialize(),
+      // code to run if the request succeeds;
+      // the response is passed to the function
+      success: function (html) {
+          $('#addSeasonObject').html(html);
+          //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+          //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+      },
+      // code to run if the request fails; the raw request and
+      // status codes are passed to the function
+      error: function (xhr, status, errorThrown) {
+          alert("Sorry, there was a problem!");
+          //console.log( "Error: " + errorThrown );
+          //console.log( "Status: " + status );
+          //console.dir( xhr );
+      },
+      // code to run regardless of success or failure
+      complete: function (xhr, status) {
+          alert( "Submitted Successfully" );
+          $('#loading').remove();
+          $('#addSeasonObject').fadeIn();
+      }
+  });
+});
+
+// Opening episodes in dash
+$('a.admin-open-episodes').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check if working");
+  $('#seasonSection').removeClass('object-show');
+  $('#seasonSection').addClass('object-hide');
+  $('#episodeSection').removeClass('object-hide');
+  $('#episodeSection').addClass('object-show');
+
+  $this = $(this);
+  $url = $this.attr("epiLnk");
+
+  console.log($url);
+
+  $('#episodeCont').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Loading...<div class="center"></div></div>');
+  $.ajax({
+      // the URL for the request
+      url: $url,
+      // whether this is a POST or GET request
+      type: "GET",
+      // the type of data we expect back
+      data: $this.serialize(),
+      // code to run if the request succeeds;
+      // the response is passed to the function
+      success: function (html) {
+          $('#episodeCont').html(html);
+          //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+          //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+      },
+      // code to run if the request fails; the raw request and
+      // status codes are passed to the function
+      error: function (xhr, status, errorThrown) {
+          alert("Sorry, there was a problem!");
+          $('#episodeCont').append('<div>Error returned.</div>');
+          console.log( "Error: " + errorThrown );
+          console.log( "Status: " + status );
+          console.dir( xhr );
+      },
+      // code to run regardless of success or failure
+      complete: function (xhr, status) {
+          //alert( "Submitted Succesfully" );
+          $('#loading').remove();
+          $('#episodeCont').fadeIn();
+      }
+  });
+
+});
+
+$('a#cancel-episodes').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check cancel if working");
+
+  $('#episodeSection').removeClass('object-show');
+  $('#episodeSection').addClass('object-hide');
+  $('#seasonSection').removeClass('object-hide');
+  $('#seasonSection').addClass('object-show');
+});
+</script>

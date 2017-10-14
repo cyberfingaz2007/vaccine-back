@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JUMAIN Vaccination Tracker">
+    <meta name="author" content="JUMAIN">
+
+    <title>{% block title %}Welcome!{% endblock %} | JUMAIN Vaccination Tracker</title>
+    
+    <!-- css -->
+    <link href="{{ asset('appland/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('appland/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('appland/css/nivo-lightbox.css') }}" rel="stylesheet" />
+    <link href="{{ asset('appland/css/nivo-lightbox-theme/default/default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('appland/css/animate.css') }}" rel="stylesheet" />
+    <link href="{{ asset('appland/css/style.css') }}" rel="stylesheet">
+    {% block stylesheets %}{% endblock %}
+    <!-- template skin -->
+    <link id="t-colors" href="{{ asset('appland/color/default.css') }}" rel="stylesheet">
+
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
+
+<div id="wrapper">
+    
+    <nav class="navbar navbar-custom" role="navigation">
+        <div class="container navigation">
+        
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="{{ path('jumain_default_homepage') }}">
+                    <img src="{{ asset('appland/img/logo.png') }}" alt="JUMAIN Project Tracker" width="150" height="40" />
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+              <ul class="nav navbar-nav">
+                <li><div id="cart"></div></li>
+                <li class="active"><a href="{{ path('jumain_default_homepage') }}">Home</a></li>
+                <li><a href="#">API Documentation <span class="label label-danger">10</span></a> </li>
+
+              </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+    <!-- Section: intro -->
+    <section id="intro" class="intro">
+        <div class="intro-content">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col-sm-5 col-md-5 col-lg-5">
+                    <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+                        <img src="{{ asset('appland/img/iphone.png') }}" class="img-responsive" alt="" />
+
+                    </div>
+                    </div>
+                    <div class="col-sm-7 col-md-7 col-lg-7 slogan">
+                        <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+                        <h2>Vaccination Project Tracker</h2>
+                        <p>
+                        <h5>Welcome!</h5> You have reached the Web Service for this project. This project only
+                        offers RESTFUL Services at the <code>"/api/"</code> url. Record entry and other information can
+                        be accessed at the various frontend applications developed for this project ie. The React App at <code>http://vaccine-tracker.net</code> or the mobile application on the various mobile store.
+                        
+                        </p>
+                        <p>
+                        <strong>API Docs</strong> Please Check out the API documentation section to find out more information of the various Endpoints exposed bby this project.
+                        </p>
+                        </div>
+                        <div class="buttons">
+                        <a href="#" class="btn btn-danger btn-lg wow fadeInLeft" data-wow-duration="2s" data-wow-delay="0.2s"><i class="fa fa-android fa-2x"></i> Vaccine Tracker<br /> <small>React App</small></a>
+
+                        <a href="#" class="btn btn-success btn-lg wow fadeInLeft" data-wow-duration="3s" data-wow-delay="0.3s"><i class="fa fa-android fa-2x"></i> Store<br /> <small>Android</small></a>
+
+                        <a href="#" class="btn btn-info btn-lg wow fadeInRight" data-wow-duration="4s" data-wow-delay="0.4s"><i class="fa fa-apple fa-2x"></i> Store<br /> <small>iOs</small></a>
+                        </div>
+                        
+                    </div>                  
+                </div>      
+            </div>
+        </div>      
+    </section>
+    
+    <!-- /Section: intro -->
+    <div class="divider-short"></div>
+    
+    <section id="content1" class="home-section">
+    
+        <div class="container">
+            <div class="row text-center heading">
+                <h3>API Documentation</h3>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="wow fadeInLeft" data-wow-delay="0.2s">
+                        <img src="{{ asset('appland/img/img-1.png') }}" alt="" class="img-responsive" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="wow fadeInRight" data-wow-delay="0.3s">
+                        <div class="features">                          
+                            <i class="fa fa-check fa-2x circled bg-skin float-left"></i>
+                            <h5>Modern interface</h5>
+                            <p>
+                            Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                            </p>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-check fa-2x circled bg-skin float-left"></i>
+                            <h5>Easy to use</h5>
+                            <p>
+                            Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                            </p>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-check fa-2x circled bg-skin float-left"></i>
+                            <h5>Free updates</h5>
+                            <p>
+                            Lorem ipsum dolor sit amet, nec te mollis utroque honestatis, ut utamur molestiae vix, graecis eligendi ne.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- /Section: content -->
+    
+    <div class="divider-short"></div>
+    
+    <section id="content2" class="home-section">
+    
+        <div class="container">
+            <div class="row text-center heading">
+                <h3>More features</h3>
+            </div>
+            
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="wow fadeInLeft" data-wow-delay="0.2s">
+                        <p>
+                        Lorem ipsum dolor sit amet, ipsum vocent reprimique ad eos, ludus option signiferumque an pro. Id case quaestio mei, an ipsum offendit vel, ex ius quis comprehensam. Eu per illud modus fabellas, eam an brute gubergren repudiandae.
+                        </p>
+                        <p>
+                        Eam voluptua assentior ea, an eirmod sensibus scribentur vel. Elit nonumy indoctum per eu. Feugait omittantur ne qui, commodo invidunt ea nam
+                        </p>
+                        <div class="divider-short marginbot-30 margintop-30"></div>
+                        <div class="features">                          
+                            <i class="fa fa-android fa-2x circled bg-skin float-left"></i>
+                            <h5>Android application</h5>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-apple fa-2x circled bg-skin float-left"></i>
+                            <h5>For Apple iOs</h5>
+                        </div>
+                        <div class="features">                          
+                            <i class="fa fa-windows fa-2x circled bg-skin float-left"></i>
+                            <h5>Windows version</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="wow fadeInRight" data-wow-delay="0.3s">
+                        <img src="{{ asset('appland/img/img-2.png') }}" alt="" class="img-responsive" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <!-- /Section: content -->
+    
+    <div class="divider-short"></div>
+    <section id="works" class="home-section text-center">
+        <div class="container">
+            <div class="row text-center heading">
+                <h3>Screenshots</h3>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12" >
+
+                    <div class="row gallery-item">
+                        <div class="col-md-3">
+                            <a href="img/works/1.jpg') }}" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="{{ asset('appland/img/works/1@2x.jpg') }}">
+                                <img src="{{ asset('appland/img/works/1.jpg') }}" class="img-responsive" alt="img">
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="{{ asset('appland/img/works/2.jpg') }}" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="{{ asset('appland/img/works/1@2x.jpg') }}">
+                                <img src="{{ asset('appland/img/works/2.jpg') }}" class="img-responsive" alt="img">
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="{{ asset('appland/img/works/3.jpg') }}" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="{{ asset('appland/img/works/1@2x.jpg') }}">
+                                <img src="{{ asset('appland/img/works/3.jpg') }}" class="img-responsive" alt="img">
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="{{ asset('appland/img/works/4.jpg') }}" title="This is an image title" data-lightbox-gallery="gallery1" data-lightbox-hidpi="{{ asset('appland/img/works/1@2x.jpg') }}">
+                                <img src="{{ asset('appland/img/works/4.jpg') }}" class="img-responsive" alt="img">
+                            </a>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>  
+        </div>
+    </section>
+
+
+    <section id="callaction" class="home-section paddingtop-40">    
+           <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="callaction">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="wow fadeInUp" data-wow-delay="0.1s">
+                                    <div class="cta-text">
+                                    <h3>Need more advanced features?</h3>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipiscing elit uisque interdum ante eget faucibus. </p>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="wow lightSpeedIn" data-wow-delay="0.1s">
+                                        <div class="cta-btn">
+                                        <a href="#" class="btn btn-skin btn-lg">Contact us</a>  
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>  
+
+    <footer>
+    
+
+        <div class="sub-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <ul class="social">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+                    </ul>
+                
+                    <div class="wow fadeInLeft" data-wow-delay="0.1s">
+                    <div class="text-left">
+                    <p>&copy;Copyright 2017 - JUMAIN Vaccine Tracker. All rights reserved.</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="wow fadeInRight" data-wow-delay="0.1s">
+                    <div class="text-right margintop-30">
+                        <p>Developed by <a href="#">JUMAIN</a></p>
+                    </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+        </div>
+    </footer>
+
+</div>
+<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+    <!-- Core JavaScript Files -->
+    <script src="{{ asset('appland/js/jquery.min.js') }}"></script>     
+    <script src="{{ asset('appland/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('appland/js/jquery.easing.min.js') }}"></script>
+    <script src="{{ asset('appland/js/wow.min.js') }}"></script>
+    <script src="{{ asset('appland/js/jquery.scrollTo.js') }}"></script>
+    <script src="{{ asset('appland/js/nivo-lightbox.min.js') }}"></script>
+    <script src="{{ asset('appland/js/custom.js') }}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<?php
+
+namespace JUMAIN\HealthBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Community
+ *
+ * @ORM\Table(name="community")
+ * @ORM\Entity(repositoryClass="JUMAIN\HealthBundle\Repository\CommunityRepository")
+ */
+class Community
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="CommunityName", type="string", length=255, nullable=true)
+     */
+    private $communityName;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="MaleAbv10", type="integer", nullable=true)
+     */
+    private $maleAbv10;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="FemBtw10N15", type="integer", nullable=true)
+     */
+    private $femBtw10N15;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="ChildBel10", type="integer", nullable=true)
+     */
+    private $childBel10;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="FemAbv15", type="integer", nullable=true)
+     */
+    private $femAbv15;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="current", type="boolean", nullable=true)
+     */
+    private $current;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Project", mappedBy="community")
+     *
+     */
+    private $project;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="CreatedAt", type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="UpdatedAt", type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+}
+

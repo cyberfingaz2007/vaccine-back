@@ -1,0 +1,3 @@
+jumain_default_homepage:
+    path:     /
+    defaults: { _controller: JUMAINDefaultBundle:Default:index }

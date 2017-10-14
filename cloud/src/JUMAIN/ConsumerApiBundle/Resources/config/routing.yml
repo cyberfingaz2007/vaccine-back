@@ -1,0 +1,135 @@
+jumain_consumer_api_homepage:
+    path:     /
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:index }
+    methods:   [GET]
+
+jumain_consumer_api_all_movies:
+    path:     /movies
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getMovies }
+    methods:   [GET]
+#    requirements:
+#      _locale: '%app.locales%'
+
+jumain_consumer_api_movies_holly:
+    path:     /movies/holly
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getHollyMovies }
+    methods:   [GET]
+
+jumain_consumer_api_movies_nolly:
+    path:     /movies/nolly
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getNollyMovies }
+    methods:   [GET]
+
+jumain_consumer_api_movies_bolly:
+    path:     /movies/bolly
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getBollyMovies }
+    methods:   [GET]
+
+jumain_consumer_api_movies_novelas:
+    path:     /movies/novelas
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getNovelaMovies }
+    methods:   [GET]
+
+jumain_consumer_api_movies_korean:
+    path:     /movies/korean
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getKoreanMovies }
+    methods:   [GET]
+
+jumain_consumer_api_movies_phil:
+    path:     /movies/phil
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getPhilMovies }
+    methods:   [GET]
+
+jumain_consumer_api_movies_others:
+    path:     /movies/others
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getHollyMovies }
+    methods:   [GET]
+
+#   Series API Routes start from here
+jumain_consumer_api_all_series:
+    path:     /series
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getSeries }
+    methods:   [GET]
+#    requirements:
+#      id: \d+
+
+jumain_consumer_api_series_holly:
+    path:     /series/holly
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getHollySeries }
+    methods:   [GET]
+
+jumain_consumer_api_series_nolly:
+    path:     /series/nolly
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getNollySeries }
+    methods:   [GET]
+
+jumain_consumer_api_series_bolly:
+    path:     /series/bolly
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getBollySeries }
+    methods:   [GET]
+
+jumain_consumer_api_series_novela:
+    path:     /series/novela
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getNovelaSeries }
+    methods:   [GET]
+
+jumain_consumer_api_series_korean:
+    path:     /series/korean
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getKoreanSeries }
+    methods:   [GET]
+
+jumain_consumer_api_series_phil:
+    path:     /series/phil
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getPhilSeries }
+    methods:   [GET]
+
+jumain_consumer_api_series_others:
+    path:     /series/others
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getHollySeries }
+    methods:   [GET]
+
+jumain_consumer_api_serie_seasons:
+    path:     /series/{serieId}/seasons
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getSerieSeasons }
+    methods:   [GET]
+    requirements:
+        serieId: \d+
+
+jumain_consumer_api_serie_season_episodes:
+    path:     /series/seasons/{seasonId}/episodes
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getSeasonEpisodes }
+    methods:   [GET]
+    requirements:
+        seasonId: \d+
+
+jumain_consumer_api_musvids_local:
+    path:     /musvids/local
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getLocalMusVids }
+    methods:   [GET]
+
+jumain_consumer_api_musvids_foreign:
+    path:     /musvids/foreign
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getForeignMusVids }
+    methods:   [GET]
+
+jumain_consumer_api_trailers_local:
+    path:     /trailers/local
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getLocalTrailers }
+    methods:   [GET]
+
+jumain_consumer_api_trailers_foreign:
+    path:     /trailers/foreign
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getForeignTrailers }
+    methods:   [GET]
+
+jumain_consumer_api_channels:
+    path:     /channels
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getChannels }
+    methods:   [GET]
+
+jumain_consumer_api_channel_videos:
+    path:     /channels/{id}/channelvideos
+    defaults: { _controller: JUMAINConsumerApiBundle:Default:getChannelVideos }
+    methods:   [GET]
+    requirements:
+        channelId: \d+

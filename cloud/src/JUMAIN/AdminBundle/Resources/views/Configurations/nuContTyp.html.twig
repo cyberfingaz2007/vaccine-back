@@ -1,0 +1,116 @@
+{% if contTypEntities is empty %}
+    <p> No content type has been set. Please Click on the Add button above to set content type. </p>
+{% else %}
+  <table id="mainContType" class="table table-hover object-show">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Content Type</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for e in contTypEntities %}
+            <tr>
+                <td>{{ e.id }}</td>
+                <td>
+                    {% if e.contentType is empty %}
+                    {% else %}
+                    {{ e.contentType }}
+                    {% endif %}
+                </td>
+                <td class="pull-right">
+                  <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                  <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+      </tbody>
+  </table>
+{% endif %}
+
+<div id="addContType" class="panel panel-grey object-hide">
+    <div class="panel-heading">
+        Add Content Type</div>
+    <div class="panel-body pan">
+        {{ form_start(formContType) }}
+            {{ form_errors(formContType) }}
+        <div class="form-body pal">
+            <div class="form-group">
+                <div class="input-icon right">
+                    {{ form_errors(formContType.contentType) }}
+                    <i class="fa fa-user"></i>
+                    {{ form_widget(formContType.contentType, {'attr': {'class': 'form-control', 'placeholder':'Content Type', 'autofocus':''}}) }}
+                </div>
+            </div>
+        </div>
+        <div class="form-actions text-right pal">
+          <a href="#" class="btn cancel-add-conttyp">Cancel</a>&nbsp;&nbsp;
+            {{ form_widget(formContType.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+        </div>
+        {{ form_end(formContType) }}
+    </div>
+</div>
+
+<script>
+$('a#addConTypeObjBtn').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check if working");
+  $('#mainContType').removeClass('object-show');
+  $('#mainContType').addClass('object-hide');
+  $('#addContType').removeClass('object-hide');
+  $('#addContType').addClass('object-show');
+});
+
+$('a.cancel-add-conttyp').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check cancel if working");
+
+  $('#addContType').removeClass('object-show');
+  $('#addContType').addClass('object-hide');
+
+  $('#mainContType').removeClass('object-hide');
+  $('#mainContType').addClass('object-show');
+});
+
+$( '#formContType' ).submit(function(e) {
+  //alert( "Handler for .submit() called." );
+  e.preventDefault();
+
+  $this = $(this);
+  $url = $this.attr("action");
+  $('#con-typ-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+  $.ajax({
+      // the URL for the request
+      url: $url,
+      // whether this is a POST or GET request
+      type: "POST",
+      // the type of data we expect back
+      data: $this.serialize(),
+      // code to run if the request succeeds;
+      // the response is passed to the function
+      success: function (html) {
+          $('#con-typ-cat').html(html);
+          //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+          //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+      },
+      // code to run if the request fails; the raw request and
+      // status codes are passed to the function
+      error: function (xhr, status, errorThrown) {
+          alert("Sorry, there was a problem!");
+          //console.log( "Error: " + errorThrown );
+          //console.log( "Status: " + status );
+          //console.dir( xhr );
+      },
+      // code to run regardless of success or failure
+      complete: function (xhr, status) {
+          //alert( "Submitted Succesfully" );
+          $('#loading').remove();
+          $('#con-typ-cat').fadeIn();
+      }
+  });
+});
+</script>

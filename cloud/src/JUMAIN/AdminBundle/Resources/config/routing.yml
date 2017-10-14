@@ -1,0 +1,157 @@
+jumain_admin_homepage:
+    path:     /
+    defaults: { _controller: JUMAINAdminBundle:Default:index }
+
+jumain_admin_signup:
+    path:     /signup
+    defaults: { _controller: JUMAINAdminBundle:Default:index }
+
+jumain_admin_login:
+    path:     /login
+    defaults: { _controller: JUMAINAdminBundle:Default:login }
+
+jumain_admin_login_chk:
+    path:     /login_chk
+
+jumain_admin_logout:
+    path:     /logout
+
+jumain_admin_dashboard:
+    path:     /dash
+    defaults: { _controller: JUMAINAdminBundle:Default:dashboard }
+
+jumain_admin_trailer:
+    path:     /trailers
+    defaults: { _controller: JUMAINAdminBundle:Trailers:index }
+
+jumain_admin_trailer_add:
+    path:     /trailers/add
+    defaults: { _controller: JUMAINAdminBundle:Trailers:addTrailers }
+
+jumain_admin_series:
+    path:     /series
+    defaults: { _controller: JUMAINAdminBundle:Series:index }
+
+jumain_admin_series_add:
+    path:     /series/add
+    defaults: { _controller: JUMAINAdminBundle:Series:addSeries }
+
+jumain_admin_serie_seasons:
+    path:     /series/{serieId}/seasons
+    defaults: { _controller: JUMAINAdminBundle:Series:getSerieSeasons }
+    requirements:
+        serieId: "\d+"
+
+jumain_admin_serie_seasons_add:
+    path:     /series/seasons/add
+    defaults: { _controller: JUMAINAdminBundle:Series:addSerieSeason }
+#    requirements:
+#        serieId: "\d+"
+
+jumain_admin_serie_season_episodes:
+    path:     /series/seasons/{seasonId}/episodes
+    defaults: { _controller: JUMAINAdminBundle:Series:getSeasonEpisodes }
+    requirements:
+        seasonId: "\d+"
+
+jumain_admin_serie_season_episodes_add:
+    path:     /series/seasons/episodes/add
+    defaults: { _controller: JUMAINAdminBundle:Series:addSeasonEpisode }
+#    requirements:
+#        seasonId: "\d+"
+
+jumain_admin_movies:
+    path:     /movies
+    defaults: { _controller: JUMAINAdminBundle:Movies:index }
+
+jumain_admin_movies_add:
+    path:     /movies/add
+    defaults: { _controller: JUMAINAdminBundle:Movies:addMovies }
+
+jumain_admin_musvids:
+    path:     /musvids
+    defaults: { _controller: JUMAINAdminBundle:MusicVids:index }
+
+jumain_admin_channels:
+    path:     /channels
+    defaults: { _controller: JUMAINAdminBundle:Channels:index }
+
+jumain_admin_channels_add:
+    path:     /channels/add
+    defaults: { _controller: JUMAINAdminBundle:Channels:addChannel }
+
+jumain_admin_channel_video_add:
+    path:     /channels/channelvids/add
+    defaults: { _controller: JUMAINAdminBundle:Channels:addChannelVids }
+
+jumain_admin_musvids_add:
+    path:     /musvids/add
+    defaults: { _controller: JUMAINAdminBundle:MusicVids:addMusVids }
+
+jumain_admin_comedy:
+    path:     /comedy
+    defaults: { _controller: JUMAINAdminBundle:Comedy:index }
+
+jumain_admin_comedy_add:
+    path:     /comedy/add
+    defaults: { _controller: JUMAINAdminBundle:Comedy:addComedy }
+
+jumain_admin_authvids:
+    path:     /authvids
+    defaults: { _controller: JUMAINAdminBundle:AuthVideos:index }
+
+jumain_admin_authvids_add:
+    path:     /authvids/add
+    defaults: { _controller: JUMAINAdminBundle:AuthVideos:addAuthVids }
+
+jumain_admin_akants:
+    path:     /akants
+    defaults: { _controller: JUMAINAdminBundle:Accounting:index }
+
+jumain_admin_user_akants:
+    path:     /uakants
+    defaults: { _controller: JUMAINAdminBundle:UserAccounts:index }
+
+jumain_admin_config:
+    path:     /config
+    defaults: { _controller: JUMAINAdminBundle:Configurations:index }
+
+jumain_admin_config_add_authvidscate:
+    path:     /config/addauthvidscate
+    defaults: { _controller: JUMAINAdminBundle:Configurations:addAuthVidsCate }
+
+jumain_admin_config_add_category:
+    path:     /config/addcategory
+    defaults: { _controller: JUMAINAdminBundle:Configurations:addCategory }
+
+jumain_admin_config_add_musvidscate:
+    path:     /config/addmusvidscate
+    defaults: { _controller: JUMAINAdminBundle:Configurations:addMuzvidsCate }
+
+jumain_admin_config_add_trailercate:
+    path:     /config/addtrailercate
+    defaults: { _controller: JUMAINAdminBundle:Configurations:addTrailerCate }
+
+jumain_admin_config_add_comedycate:
+    path:     /config/addcomedycate
+    defaults: { _controller: JUMAINAdminBundle:Configurations:addComedyCate }
+
+jumain_admin_config_add_conttype:
+    path:     /config/addconttype
+    defaults: { _controller: JUMAINAdminBundle:Configurations:addContType }
+
+jumain_admin_config_add_contlvl:
+    path:     /config/addcontlvl
+    defaults: { _controller: JUMAINAdminBundle:Configurations:addContLvl }
+
+jumain_admin_config_add_contlvlprc:
+    path:     /config/addcontlvlprc
+    defaults: { _controller: JUMAINAdminBundle:Configurations:addContLvlPrc }
+
+jumain_admin_musvids:
+    path:     /musvids
+    defaults: { _controller: JUMAINAdminBundle:MusicVids:index }
+
+jumain_admin_musvids:
+    path:     /musvids
+    defaults: { _controller: JUMAINAdminBundle:MusicVids:index }

@@ -1,0 +1,4 @@
+services:
+#    jumain_consumer_api.example:
+#        class: JUMAIN\ConsumerApiBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

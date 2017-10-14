@@ -1,0 +1,90 @@
+{
+    "name": "symfony/framework-standard-edition",
+    "license": "MIT",
+    "type": "project",
+    "description": "The \"Symfony Standard Edition\" distribution",
+    "autoload": {
+        "psr-4": { "": "src/" },
+        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+    },
+    "require": {
+        "php": ">=5.3.9",
+        "symfony/symfony": "2.8.*",
+        "doctrine/orm": "^2.4.8",
+        "doctrine/doctrine-bundle": "~1.4",
+        "symfony/swiftmailer-bundle": "~2.3",
+        "symfony/monolog-bundle": "~2.4",
+        "sensio/distribution-bundle": "~5.0",
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "incenteev/composer-parameter-handler": "~2.0",
+        "twig/extensions": "dev-master",
+        "symfony/assetic-bundle": "2.7.*",
+        "friendsofsymfony/user-bundle": "2.0.*@dev",
+        "pugx/multi-user-bundle": "3.0.*@dev",
+        "friendsofsymfony/rest-bundle": "dev-master",
+        "liuggio/excelbundle": "2.0.*@dev",
+        "jms/security-extra-bundle": "1.5.*@dev",
+        "jms/metadata": "1.5.*@dev",
+        "jms/parser-lib": "1.1.*@dev",
+        "jms/aop-bundle": "1.1.*@dev",
+        "jms/di-extra-bundle": "1.4.*@dev",
+        "jms/serializer-bundle": "1.1.*@dev",
+        "knplabs/knp-snappy-bundle": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "dev-master",
+        "doctrine/data-fixtures" : "dev-master",
+        "doctrine/migrations": "dev-master",
+        "doctrine/doctrine-migrations-bundle": "dev-master",
+        "stof/doctrine-extensions-bundle": "dev-master",
+        "phpoption/phpoption": "dev-master",
+        "gedmo/doctrine-extensions": "~2.3.1",
+        "mockery/mockery": "0.9.*@dev",
+        "friendsofsymfony/elastica-bundle": "3.1.*@dev",
+        "leafo/lessphp": "0.5.0",
+        "smart-core/accelerator-cache-bundle": "1.1.*",
+        "phpunit/phpunit": "4.8.*@dev",
+        "phpunit/dbunit": ">=1.2",
+        "ircmaxell/random-lib": "1.1.*@dev",
+        "nelmio/cors-bundle": "^1.5",
+        "friendsofsymfony/oauth-server-bundle": "^1.5",
+        "lexik/jwt-authentication-bundle": "^2.4",
+        "vich/uploader-bundle": "1.4.*@dev",
+        "php-ffmpeg/php-ffmpeg": "^0.9.3",
+        "php-ffmpeg/extras": "^0.3.1"
+    },
+    "require-dev": {
+        "sensio/generator-bundle": "~3.0",
+        "symfony/phpunit-bridge": "~2.7"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+        ],
+        "post-update-cmd": [
+            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
+        ]
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "extra": {
+        "symfony-app-dir": "app",
+        "symfony-web-dir": "web",
+        "symfony-assets-install": "relative",
+        "incenteev-parameters": {
+            "file": "app/config/parameters.yml"
+        },
+        "branch-alias": {
+            "dev-master": "2.8-dev"
+        }
+    }
+}

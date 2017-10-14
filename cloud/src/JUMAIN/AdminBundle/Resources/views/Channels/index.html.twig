@@ -1,0 +1,387 @@
+<div class="row mbl object-show">
+  <div class="col-lg-12">
+    <div class="panel">
+        <a id="addObjBtn" class="btn btn-green"><i class="fa fa-upload"></i>&nbsp;
+            Add Channel</a>
+        <a id="addCVObjBtn" class="btn btn-green"><i class="fa fa-upload"></i>&nbsp;
+            Add Channel Video</a>
+    </div>
+  </div>
+</div>
+<div id="mainObject" class="row mbl">
+  <div class="col-lg-12">
+      <ul id="generalTab" class="nav nav-tabs responsive">
+          <li class="active"><a href="#channels-tab" data-toggle="tab">Channels</a></li>
+          <li><a href="#channels-video-tab" data-toggle="tab">All Channels Videos</a></li>
+      </ul>
+      <div id="generalTabContent" class="tab-content responsive">
+          <div id="channels-tab" class="tab-pane fade in active">
+            <div class="row">
+              <div class="col-md-12">
+                <!--Channels start-->
+                <section class="panel">
+                  <header class="panel-heading">
+                    Channels
+                  </header>
+                  <div class="panel-body table-responsive">
+                    {% if channelsEntities is empty %}
+                        <p> No Channels listed. Please Click on the Add button above to include new Channels. </p>
+                    {% else %}
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Name of Channel:</th>
+                            <th>Channel Handle:</th>
+                            <th>Description:</th>
+                            <th>Owner:</th>
+                            <th>Date Created:</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for e in channelsEntities %}
+                              <tr>
+                                  <td>{{ e.id }}</td>
+                                  <td>
+                                      {% if e.channelName is empty %}
+                                      {% else %}
+                                      {{ e.channelName }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.handle is empty %}
+                                      {% else %}
+                                      {{ e.handle }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.description is empty %}
+                                      {% else %}
+                                      {{ e.description }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.consumer is empty %}
+                                      {% else %}
+                                        {{ e.consumer.fullName }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.createdAt is empty %}
+                                      {% else %}
+                                        {{ e.createdAt|date("m/d/Y") }}
+                                      {% endif %}
+                                  </td>
+                                  <td class="pull-right">
+                                    <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                                    <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                                    <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                                  </td>
+                              </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    {% endif %}
+                  </div>
+                </section>
+                <!--Channels end-->
+              </div><!--end col-12 -->
+            </div>
+          </div>
+          <div id="channels-video-tab" class="tab-pane fade">
+            <div class="row">
+              <div class="col-md-12">
+                <!--Channels Vids start-->
+                <section class="panel">
+                  <header class="panel-heading">
+                    Channels Videos
+                  </header>
+                  <div class="panel-body table-responsive">
+                    {% if channelsVidsEntities is empty %}
+                        <p> No Channel Video has been entered. Please Click on the Add button above to include new video. </p>
+                    {% else %}
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Name of Content:</th>
+                            <th>Description:</th>
+                            <th>Channel:</th>
+                            <th>Video Length:</th>
+                            <th>Added at:</th>
+                            <th>Specified Price:</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for e in channelsVidsEntities %}
+                              <tr>
+                                  <td>{{ e.id }}</td>
+                                  <td>
+                                      {% if e.contentName is empty %}
+                                      {% else %}
+                                      {{ e.contentName }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.description is empty %}
+                                      {% else %}
+                                      {{ e.description }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.channel is empty %}
+                                      {% else %}
+                                      {{ e.channel.channelName }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.videoLength is empty %}
+                                      {% else %}
+                                      {{ e.videoLength }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.createdAt is empty %}
+                                      {% else %}
+                                      {{ e.createdAt }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.specifiedPrice is empty %}
+                                      {% else %}
+                                      {{ e.specifiedPrice }}
+                                      {% endif %}
+                                  </td>
+                                  <td class="pull-right">
+                                    <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                                    <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                                    <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                                  </td>
+                              </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    {% endif %}
+                  </div>
+                </section>
+                <!--Channel Vids end-->
+              </div><!--end col-12 -->
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div id="addObject" class="row mbl center object-hide">
+    <div class="col-lg-4">
+        <div class="panel panel-grey">
+            <div class="panel-heading">
+                Add Channel</div>
+            <div class="panel-body pan">
+                {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                <div class="form-body pal">
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(form.channelName) }}
+                            {{ form_errors(form.channelName) }}
+                            <i class="fa fa-music"></i>
+                            {{ form_widget(form.channelName, {'attr': {'class': 'form-control', 'placeholder':'Channel Name', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(form.handle) }}
+                            {{ form_errors(form.handle) }}
+                            <i class="fa fa-users"></i>
+                            {{ form_widget(form.handle, {'attr': {'class': 'form-control', 'placeholder':'Enter Handle', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(form.consumer) }}
+                            {{ form_errors(form.consumer) }}
+                            {{ form_widget(form.consumer, {'attr': {'class': 'form-control', 'placeholder':'Category', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(form.description) }}
+                            {{ form_errors(form.description) }}
+                            {{ form_widget(form.description, {'attr': {'class': 'form-control', 'placeholder':'Year Produced', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(form.imageFile) }}
+                            {{ form_errors(form.imageFile) }}
+                            <i class="fa fa-picture-o"></i>
+                            {{ form_widget(form.imageFile, {'attr': {'class': '', 'placeholder':'Choose Poster Image File', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions text-right pal">
+                    <a href="#" class="btn cancel-add">Cancel</a>&nbsp;&nbsp;
+                    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="addCVObject" class="row mbl center object-hide">
+    <div class="col-lg-4">
+        <div class="panel panel-grey">
+            <div class="panel-heading">
+                Add Channel Video</div>
+            <div class="panel-body pan">
+                {{ form_start(formCV) }}
+                    {{ form_errors(formCV) }}
+                <div class="form-body pal">
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(formCV.contentName) }}
+                            {{ form_errors(formCV.contentName) }}
+                            <i class="fa fa-music"></i>
+                            {{ form_widget(formCV.contentName, {'attr': {'class': 'form-control', 'placeholder':'Content Name', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(formCV.channel) }}
+                            {{ form_errors(formCV.channel) }}
+                            {{ form_widget(formCV.channel, {'attr': {'class': 'form-control', 'placeholder':'Channel', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(formCV.description) }}
+                            {{ form_errors(formCV.description) }}
+                            {{ form_widget(formCV.description, {'attr': {'class': 'form-control', 'placeholder':'Description', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(formCV.videoLength) }}
+                            {{ form_errors(formCV.videoLength) }}
+                            <i class="fa fa-users"></i>
+                            {{ form_widget(formCV.videoLength, {'attr': {'class': 'form-control', 'placeholder':'Enter Length', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(formCV.specifiedPrice) }}
+                            {{ form_errors(formCV.specifiedPrice) }}
+                            <i class="fa fa-users"></i>
+                            {{ form_widget(formCV.specifiedPrice, {'attr': {'class': 'form-control', 'placeholder':'Enter Price', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(formCV.videoFile) }}
+                            {{ form_errors(formCV.videoFile) }}
+                            <i class="fa fa-film"></i>
+                            {{ form_widget(formCV.videoFile, {'attr': {'class': '', 'placeholder':'Choose Video File', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions text-right pal">
+                    <a href="#" class="btn cancel-add-cv">Cancel</a>&nbsp;&nbsp;
+                    {{ form_widget(formCV.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //For my re-arranging blocks on add object
+    $('a#addObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainObject').removeClass('object-show');
+      $('#mainObject').addClass('object-hide');
+      $('#addObject').removeClass('object-hide');
+      $('#addObject').addClass('object-show');
+    });
+
+    $('a#addCVObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainObject').removeClass('object-show');
+      $('#mainObject').addClass('object-hide');
+      $('#addCVObject').removeClass('object-hide');
+      $('#addCVObject').addClass('object-show');
+    });
+
+    $('a.cancel-add').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addObject').removeClass('object-show');
+      $('#addObject').addClass('object-hide');
+
+      $('#mainObject').removeClass('object-hide');
+      $('#mainObject').addClass('object-show');
+    });
+
+    $('a.cancel-add-cv').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addCVObject').removeClass('object-show');
+      $('#addCVObject').addClass('object-hide');
+
+      $('#mainObject').removeClass('object-hide');
+      $('#mainObject').addClass('object-show');
+    });
+
+{#
+    $( '#formChannel' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#content').hide().parent().append('<div id="loading" class="center"><i class="fa fa-cog fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function () {
+              //$('#content').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              alert( "Submitted Successfully" );
+              $('#loading').remove();
+              $('#content').fadeIn();
+          }
+      });
+    });
+#}
+</script>

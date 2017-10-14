@@ -1,0 +1,4 @@
+services:
+#    jumain_admin.example:
+#        class: JUMAIN\AdminBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

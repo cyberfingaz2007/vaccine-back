@@ -1,0 +1,106 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    role_hierarchy:
+        ROLE_EMP:        ROLE_USER
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_ELITE_ADMIN: ROLE_ADMIN
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_EMP, ROLE_ELITE_ADMIN]
+
+    encoders:
+        entity_admin:
+            class: JUMAIN\AdminBundle\Entity\AdminUser
+            algorithm: bcrypt
+            cost: 15
+            encode_as_base64: false
+        entity_emp:
+            class: JUMAIN\AdminBundle\Entity\NormalUser
+            algorithm: sha512
+            iterations: 1000
+            encode_as_base64: false
+
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        chain_provider:
+            chain:
+                providers: [in_memory, entity_admin, entity_employee]
+        entity_admin:
+            entity:
+                class: JUMAIN\AdminBundle\Entity\AdminUser
+                property: username
+        entity_employee:
+            entity:
+                class: JUMAIN\AdminBundle\Entity\NormalUser
+                property: username
+        in_memory:
+            memory: ~
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        admin_secured_area:
+            pattern: ^/admin
+            provider: entity_admin
+            security: false
+            anonymous: ~
+            form_login:
+                check_path: admin_login_check
+                login_path: /admin/login
+                default_target_path: /admin/
+                post_only: true
+            logout:
+                path:   /admin/logout
+                target: /admin/
+        employee_secured_area:
+            pattern: ^/emp
+            provider: entity_employee
+            security: false
+            anonymous: ~
+            form_login:
+                check_path: jumain_employee_login_chk
+                login_path: /emp/login
+                default_target_path: /emp/
+                post_only: true
+                use_referer: true
+            logout:
+                path:   /emp/logout
+                target: /emp/
+            remember_me:
+                secret: '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path: /
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                #always_remember_me: true
+
+        main:
+            anonymous: ~
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+    access_control:
+        admin_login:
+            path: /admin/login
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        admin_area:
+            path: /admin/.*
+            roles: ROLE_ADMIN
+        consumer_login:
+            path: /emp/login
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        consumer_register:
+            path: /emp/signup
+            roles: IS_AUTHENTICATED_ANONYMOUSLY
+        consumer_area:
+            path: /emp/.*
+            roles: ROLE_USER

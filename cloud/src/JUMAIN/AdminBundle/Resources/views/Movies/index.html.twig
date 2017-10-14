@@ -1,0 +1,545 @@
+<div id="mainObject" class="row mbl">
+  <div class="row mbl object-show">
+    <div class="col-lg-4">
+      <div class="panel">
+          <a id="addObjBtn" to="/admin/seriz/add" class="btn btn-green"><i class="fa fa-upload"></i>&nbsp;
+              Add Movie</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12">
+      <ul id="generalTab" class="nav nav-tabs responsive">
+          <li class="active"><a href="#hollywood-tab" data-toggle="tab">Hollywood</a></li>
+          <li><a href="#nollywood-tab" data-toggle="tab">Nollywood</a></li>
+          <li><a href="#bollywood-tab" data-toggle="tab">Bollywood</a></li>
+          <li><a href="#novelas-tab" data-toggle="tab">Novelas</a></li>
+          <li><a href="#korean-tab" data-toggle="tab">Korean</a></li>
+          <li><a href="#phillipines-tab" data-toggle="tab">Phillipines</a></li>
+          <li><a href="#others-tab" data-toggle="tab">Other Regions</a></li>
+      </ul>
+      <div id="generalTabContent" class="tab-content responsive">
+          <div id="hollywood-tab" class="tab-pane fade in active">
+            <div class="row">
+              <div class="col-md-12">
+                <!--Movies start-->
+                <section class="panel">
+                  <header class="panel-heading">
+                    Hollywood Movies
+                  </header>
+                  <div class="panel-body table-responsive">
+                    {% if hollyEntities is empty %}
+                        <p> No Movie with the Hollywood category has been entered. Please Click on the Add button above to include new Series. </p>
+                    {% else %}
+                      <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Name of Movie:</th>
+                            <th>Description:</th>
+                            <th>Year Produced</th>
+                            <th>Length of Movie</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for e in hollyEntities %}
+                              <tr>
+                                  <td>{{ e.id }}</td>
+                                  <td>
+                                      {% if e.movieName is empty %}
+                                      {% else %}
+                                      {{ e.movieName }}
+                                      {% endif %}
+                                  </td>
+                                  <td>
+                                      {% if e.description is empty %}
+                                      {% else %}
+                                      {{ e.description }}
+                                      {% endif %}
+                                  </td>
+                                  <td>{{ e.movieYear }}</td>
+                                  <td>{{ e.movieLength }}</td>
+                                  <td class="pull-right">
+                                    <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                                    <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                                    <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                                  </td>
+                              </tr>
+                          {% endfor %}
+                        </tbody>
+                      </table>
+                    {% endif %}
+                  </div>
+                </section>
+                <!--Movies end-->
+              </div><!--end col-12 -->
+            </div>
+          </div>
+          <div id="nollywood-tab" class="tab-pane fade">
+              <div class="row">
+                <div class="col-md-12">
+                  <!--Movies start-->
+                  <section class="panel">
+                    <header class="panel-heading">
+                      Nollywood Movies
+                    </header>
+                    <div class="panel-body table-responsive">
+                      {% if nollyEntities is empty %}
+                          <p> No Movie with the Nollywood category has been entered. Please Click on the Add button above to include new Series. </p>
+                      {% else %}
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Name of Movie:</th>
+                              <th>Description:</th>
+                              <th>Year Produced</th>
+                              <th>Length of Movie</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for e in nollyEntities %}
+                                <tr>
+                                    <td>{{ e.id }}</td>
+                                    <td>
+                                        {% if e.movieName is empty %}
+                                        {% else %}
+                                        {{ e.movieName }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if e.description is empty %}
+                                        {% else %}
+                                        {{ e.description }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ e.movieYear }}</td>
+                                    <td>{{ e.movieLength }}</td>
+                                    <td class="pull-right">
+                                      <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      {% endif %}
+                    </div>
+                  </section>
+                  <!--Movies end-->
+                </div><!--end col-12 -->
+              </div>
+          </div>
+          <div id="bollywood-tab" class="tab-pane fade">
+              <div class="row">
+                <div class="col-md-12">
+                  <!--Movies start-->
+                  <section class="panel">
+                    <header class="panel-heading">
+                      Bollywood Movies
+                    </header>
+                    <div class="panel-body table-responsive">
+                      {% if bollyEntities is empty %}
+                          <p> No Movie with the Bollywood category has been entered. Please Click on the Add button above to include new Series. </p>
+                      {% else %}
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Name of Movie:</th>
+                              <th>Description:</th>
+                              <th>Year Produced</th>
+                              <th>Length of Movie</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for e in bollyEntities %}
+                                <tr>
+                                    <td>{{ e.id }}</td>
+                                    <td>
+                                        {% if e.movieName is empty %}
+                                        {% else %}
+                                        {{ e.movieName }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if e.description is empty %}
+                                        {% else %}
+                                        {{ e.description }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ e.movieYear }}</td>
+                                    <td>{{ e.movieLength }}</td>
+                                    <td class="pull-right">
+                                      <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      {% endif %}
+                    </div>
+                  </section>
+                  <!--Movies end-->
+                </div><!--end col-12 -->
+              </div>
+          </div>
+          <div id="novelas-tab" class="tab-pane fade">
+              <div class="row">
+                <div class="col-md-12">
+                  <!--Movies start-->
+                  <section class="panel">
+                    <header class="panel-heading">
+                      Mexican/Spanish Movies
+                    </header>
+                    <div class="panel-body table-responsive">
+                      {% if novEntities is empty %}
+                          <p> No Movie with the Novelas category has been entered. Please Click on the Add button above to include new Series. </p>
+                      {% else %}
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Name of Movie:</th>
+                              <th>Description:</th>
+                              <th>Year Produced</th>
+                              <th>Length of Movie</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for e in novEntities %}
+                                <tr>
+                                    <td>{{ e.id }}</td>
+                                    <td>
+                                        {% if e.movieName is empty %}
+                                        {% else %}
+                                        {{ e.movieName }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if e.description is empty %}
+                                        {% else %}
+                                        {{ e.description }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ e.movieYear }}</td>
+                                    <td>{{ e.movieLength }}</td>
+                                    <td class="pull-right">
+                                      <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      {% endif %}
+                    </div>
+                  </section>
+                  <!--Movies end-->
+                </div><!--end col-12 -->
+              </div>
+          </div>
+          <div id="korean-tab" class="tab-pane fade">
+              <div class="row">
+                <div class="col-md-12">
+                  <!--Movies start-->
+                  <section class="panel">
+                    <header class="panel-heading">
+                      Korean Movies
+                    </header>
+                    <div class="panel-body table-responsive">
+                      {% if korEntities is empty %}
+                          <p> No Movie with the Korean category has been entered. Please Click on the Add button above to include new Series. </p>
+                      {% else %}
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Name of Movie:</th>
+                              <th>Description:</th>
+                              <th>Year Produced</th>
+                              <th>Length of Movie</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for e in korEntities %}
+                                <tr>
+                                    <td>{{ e.id }}</td>
+                                    <td>
+                                        {% if e.movieName is empty %}
+                                        {% else %}
+                                        {{ e.movieName }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if e.description is empty %}
+                                        {% else %}
+                                        {{ e.description }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ e.movieYear }}</td>
+                                    <td>{{ e.movieLength }}</td>
+                                    <td class="pull-right">
+                                      <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      {% endif %}
+                    </div>
+                  </section>
+                  <!--Movies end-->
+                </div><!--end col-12 -->
+              </div>
+          </div>
+          <div id="phillipines-tab" class="tab-pane fade">
+              <div class="row">
+                <div class="col-md-12">
+                  <!--Movies start-->
+                  <section class="panel">
+                    <header class="panel-heading">
+                      Phillipines Movies
+                    </header>
+                    <div class="panel-body table-responsive">
+                      {% if philEntities is empty %}
+                          <p> No Movie with the Phillipines category has been entered. Please Click on the Add button above to include new Series. </p>
+                      {% else %}
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Name of Movie:</th>
+                              <th>Description:</th>
+                              <th>Year Produced</th>
+                              <th>Length of Movie</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for e in philEntities %}
+                                <tr>
+                                    <td>{{ e.id }}</td>
+                                    <td>
+                                        {% if e.movieName is empty %}
+                                        {% else %}
+                                        {{ e.movieName }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if e.description is empty %}
+                                        {% else %}
+                                        {{ e.description }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ e.movieYear }}</td>
+                                    <td>{{ e.movieLength }}</td>
+                                    <td class="pull-right">
+                                      <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      {% endif %}
+                    </div>
+                  </section>
+                  <!--Movies end-->
+                </div><!--end col-12 -->
+              </div>
+          </div>
+          <div id="others-tab" class="tab-pane fade">
+              <div class="row">
+                <div class="col-md-12">
+                  <!--Movies start-->
+                  <section class="panel">
+                    <header class="panel-heading">
+                      Other Movies
+                    </header>
+                    <div class="panel-body table-responsive">
+                      {% if otherEntities is empty %}
+                          <p> No Movie with the "Others" category has been entered. Please Click on the Add button above to include new Series. </p>
+                      {% else %}
+                        <table class="table table-hover">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Name of Movie:</th>
+                              <th>Description:</th>
+                              <th>Year Produced</th>
+                              <th>Length of Movie</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for e in otherEntities %}
+                                <tr>
+                                    <td>{{ e.id }}</td>
+                                    <td>
+                                        {% if e.movieName is empty %}
+                                        {% else %}
+                                        {{ e.movieName }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if e.description is empty %}
+                                        {% else %}
+                                        {{ e.description }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ e.movieYear }}</td>
+                                    <td>{{ e.movieLength }}</td>
+                                    <td class="pull-right">
+                                      <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                                      <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      {% endif %}
+                    </div>
+                  </section>
+                  <!--Movies end-->
+                </div><!--end col-12 -->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div id="addObject" class="row mbl center object-hide">
+    <div class="col-lg-4">
+        <div class="panel panel-grey">
+            <div class="panel-heading">
+                Add Movie</div>
+            <div class="panel-body pan">
+                {{ form_start(form) }}
+                    {{ form_errors(form) }}
+                <div class="form-body pal">
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(form.movieName) }}
+                            <i class="fa fa-file-video-o"></i>
+                            {{ form_widget(form.movieName, {'attr': {'class': 'form-control', 'placeholder':'Name of Movie', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(form.category) }}
+                            {{ form_widget(form.category, {'attr': {'class': 'form-control', 'placeholder':'Category', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.description) }}
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control','rows':'5', 'placeholder':'Description', 'autofocus':''}}) }}
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(form.movieYear) }}
+                            <i class="fa fa-calendar"></i>
+                            {{ form_widget(form.movieYear, {'attr': {'class': 'form-control', 'placeholder':'Year Produced', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(form.movieLength) }}
+                            <i class="fa fa-window-minimize"></i>
+                            {{ form_widget(form.movieLength, {'attr': {'class': 'form-control', 'placeholder':'Movie Length', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(form.movieFile) }}
+                            {{ form_errors(form.movieFile) }}
+                            <i class="fa fa-film"></i>
+                            {{ form_widget(form.movieFile, {'attr': {'class': '', 'placeholder':'Choose Video File', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions text-right pal">
+                    <a href="#" class="btn cancel-add">Cancel</a>&nbsp;&nbsp;
+                    {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    //For my re-arranging blocks on add object
+    $('a#addObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainObject').removeClass('object-show');
+      $('#mainObject').addClass('object-hide');
+      $('#addObject').removeClass('object-hide');
+      $('#addObject').addClass('object-show');
+    });
+
+    $('a.cancel-add').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addObject').removeClass('object-show');
+      $('#addObject').addClass('object-hide');
+
+      $('#mainObject').removeClass('object-hide');
+      $('#mainObject').addClass('object-show');
+    });
+{#
+    $( '#formMovie' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#content').hide().parent().append('<div id="loading" class="center"><i class="fa fa-cog fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function () {
+              //$('#content').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              alert( "Submitted Succesfully" );
+              $('#loading').remove();
+              $('#content').fadeIn();
+          }
+      });
+    });
+  #}
+</script>

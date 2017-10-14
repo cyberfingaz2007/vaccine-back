@@ -1,0 +1,47 @@
+Client Info
+
+User Agent : Mozilla/5.0 (Windows NT 6.1; rv:26.0) Gecko/20100101 Firefox/26.0
+Remote Address : 127.0.0.1
+
+Server Info
+
+Host : localhost
+PHP Version : 5.4.16
+Server : Apache/2.4.4 (Win32) PHP/5.4.16
+Admin : admin@example.com
+
+Document Root : G:/wamp/www
+ROOT_PATH : G:\wamp\www\orange
+
+OrangeHRM Installation Log
+
+Thu, 28 Nov 2013 15:08:02 +0000 DB Creation - Starting
+Thu, 28 Nov 2013 15:08:02 +0000 DB Creation - Done
+Thu, 28 Nov 2013 15:08:02 +0000 DB Creation - No Errors
+Thu, 28 Nov 2013 15:08:04 +0000 Fill Data Phase 1 - Starting
+Thu, 28 Nov 2013 15:08:04 +0000 Fill Data Phase 1 - Connected to the DB Server
+Thu, 28 Nov 2013 15:08:04 +0000 Fill Data Phase 1 - Selected the DB
+Thu, 28 Nov 2013 15:08:04 +0000 Fill Data Phase 1 - Reading DB Script
+Thu, 28 Nov 2013 15:08:04 +0000 Fill Data Phase 1 - Opened DB Script
+Thu, 28 Nov 2013 15:08:04 +0000 Fill Data Phase 1 - Read DB script
+Thu, 28 Nov 2013 15:08:04 +0000 Fill Data Phase 1 - There are 254 Statements in the DB script
+Thu, 28 Nov 2013 15:08:18 +0000 Fill Data Phase 1 - Done
+Thu, 28 Nov 2013 15:08:18 +0000 Fill Data Phase 1 - No Errors
+Thu, 28 Nov 2013 15:08:20 +0000 Fill Data Phase 2 - Starting
+Thu, 28 Nov 2013 15:08:20 +0000 Fill Data Phase 2 - Connected to the DB Server
+Thu, 28 Nov 2013 15:08:20 +0000 Fill Data Phase 2 - Selected the DB
+Thu, 28 Nov 2013 15:08:20 +0000 Fill Data Phase 2 - Reading DB Script
+Thu, 28 Nov 2013 15:08:20 +0000 Fill Data Phase 2 - Opened DB Script
+Thu, 28 Nov 2013 15:08:20 +0000 Fill Data Phase 2 - Read DB script
+Thu, 28 Nov 2013 15:08:20 +0000 Fill Data Phase 2 - There are 46 Statements in the DB script
+Thu, 28 Nov 2013 15:08:21 +0000 Fill Data Phase 2 - Done
+Thu, 28 Nov 2013 15:08:21 +0000 Fill Data Phase 2 - No Errors
+Thu, 28 Nov 2013 15:08:23 +0000 Create DB user - Starting
+Thu, 28 Nov 2013 15:08:23 +0000 Create DB user - Done
+Thu, 28 Nov 2013 15:08:23 +0000 Create DB user - No Errors
+Thu, 28 Nov 2013 15:08:25 +0000 Create OrangeHRM user - Starting
+Thu, 28 Nov 2013 15:08:25 +0000 Create OrangeHRM user - Done
+Thu, 28 Nov 2013 15:08:25 +0000 Create OrangeHRM user - No Errors
+Thu, 28 Nov 2013 15:08:27 +0000 Write Conf - Starting
+Thu, 28 Nov 2013 15:08:27 +0000 Write Conf - Done
+Thu, 28 Nov 2013 15:08:27 +0000 Write Conf - No Errors

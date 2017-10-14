@@ -1,0 +1,1152 @@
+<div class="row mbl">
+  <div class="col-lg-4">
+    <div class="row">
+      <section class="panel">
+        <header class="panel-heading">
+          Movies/Series Category
+          <a id="addMovSerObjBtn" class="btn btn-green pull-right"><i class="fa fa-upload"></i>&nbsp;
+              Add </a>
+        </header>
+        <div class="panel-body table-responsive">
+          <div id="mov-ser-cat">
+            {% if cateEntities is empty %}
+                <p> No category has been entered. Please Click on the Add button above to include new Category. </p>
+            {% else %}
+              <table id="mainMovSer" class="table table-hover object-show">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Category Name</th>
+                      <th>Category</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for e in cateEntities %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td>
+                                {% if e.categoryName is empty %}
+                                {% else %}
+                                {{ e.categoryName }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if e.category is empty %}
+                                {% else %}
+                                {{ e.category }}
+                                {% endif %}
+                            </td>
+                            <td class="pull-right">
+                              <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            {% endif %}
+
+            <div id="addMovSer" class="panel panel-grey object-hide">
+                <div class="panel-heading">
+                    Add Movies/Series category</div>
+                <div class="panel-body pan">
+                    {{ form_start(formCate) }}
+                        {{ form_errors(formCate) }}
+                    <div class="form-body pal">
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formCate.categoryName) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formCate.categoryName, {'attr': {'class': 'form-control', 'placeholder':'Category Name', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formCate.category) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formCate.category, {'attr': {'class': 'form-control', 'placeholder':'Category', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions text-right pal">
+                      <a href="#" class="btn cancel-add-mov">Cancel</a>&nbsp;&nbsp;
+                        {{ form_widget(formCate.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                    </div>
+                    {{ form_end(formCate) }}
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="row">
+      <section class="panel">
+        <header class="panel-heading">
+          Music Videos Category
+          <a id="addMusObjBtn" class="btn btn-green pull-right"><i class="fa fa-upload"></i>&nbsp;
+              Add </a>
+        </header>
+        <div class="panel-body table-responsive">
+          <div id="mus-vids-cat">
+            {% if musEntities is empty %}
+                <p> No category has been entered. Please Click on the Add button above to include new Category. </p>
+            {% else %}
+              <table id="mainMusVids" class="table table-hover object-show">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Category Name</th>
+                      <th>Category</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for e in musEntities %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td>
+                                {% if e.categoryName is empty %}
+                                {% else %}
+                                {{ e.categoryName }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if e.category is empty %}
+                                {% else %}
+                                {{ e.category }}
+                                {% endif %}
+                            </td>
+                            <td class="pull-right">
+                              <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            {% endif %}
+
+            <div id="addMusVids" class="panel panel-grey object-hide">
+                <div class="panel-heading">
+                    Add Music Videos category</div>
+                <div class="panel-body pan">
+                    {{ form_start(formMuzVidsCate) }}
+                        {{ form_errors(formMuzVidsCate) }}
+                    <div class="form-body pal">
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formMuzVidsCate.categoryName) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formMuzVidsCate.categoryName, {'attr': {'class': 'form-control', 'placeholder':'Category Name', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formMuzVidsCate.category) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formMuzVidsCate.category, {'attr': {'class': 'form-control', 'placeholder':'Category', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions text-right pal">
+                      <a href="#" class="btn cancel-add-musvid">Cancel</a>&nbsp;&nbsp;
+                        {{ form_widget(formMuzVidsCate.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                    </div>
+                    {{ form_end(formMuzVidsCate) }}
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="row">
+      <section class="panel">
+        <header class="panel-heading">
+          Authored Videos Category
+          <a id="addAuthObjBtn" class="btn btn-green pull-right"><i class="fa fa-upload"></i>&nbsp;
+              Add </a>
+        </header>
+        <div class="panel-body table-responsive">
+          <div id="auth-vids-cat">
+            {% if authEntities is empty %}
+                <p> No category has been entered. Please Click on the Add button above to include new Category. </p>
+            {% else %}
+              <table id="mainAuthVids" class="table table-hover object-show">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Category Name</th>
+                      <th>Category</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for e in authEntities %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td>
+                                {% if e.categoryName is empty %}
+                                {% else %}
+                                {{ e.categoryName }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if e.category is empty %}
+                                {% else %}
+                                {{ e.category }}
+                                {% endif %}
+                            </td>
+                            <td class="pull-right">
+                              <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            {% endif %}
+
+            <div id="addAuthVids" class="panel panel-grey object-hide">
+                <div class="panel-heading">
+                    Add Authored Videos Category</div>
+                <div class="panel-body pan">
+                    {{ form_start(formAuthVidsCate) }}
+                        {{ form_errors(formAuthVidsCate) }}
+                    <div class="form-body pal">
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formAuthVidsCate.categoryName) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formAuthVidsCate.categoryName, {'attr': {'class': 'form-control', 'placeholder':'Category Name', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formAuthVidsCate.category) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formAuthVidsCate.category, {'attr': {'class': 'form-control', 'placeholder':'Category', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions text-right pal">
+                      <a href="#" class="btn cancel-add-authvid">Cancel</a>&nbsp;&nbsp;
+                        {{ form_widget(formAuthVidsCate.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                    </div>
+                    {{ form_end(formAuthVidsCate) }}
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="row mbl">
+  <div class="col-lg-4">
+    <div class="row">
+      <section class="panel">
+        <header class="panel-heading">
+          Comedy Category
+          <a id="addComObjBtn" class="btn btn-green pull-right"><i class="fa fa-upload"></i>&nbsp;
+              Add </a>
+        </header>
+        <div class="panel-body table-responsive">
+          <div id="com-cat">
+            {% if comEntities is empty %}
+                <p> No category has been entered. Please Click on the Add button above to include new Category. </p>
+            {% else %}
+              <table id="mainComedy" class="table table-hover object-show">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Category Name</th>
+                      <th>Category</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for e in comEntities %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td>
+                                {% if e.categoryName is empty %}
+                                {% else %}
+                                {{ e.categoryName }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if e.category is empty %}
+                                {% else %}
+                                {{ e.category }}
+                                {% endif %}
+                            </td>
+                            <td class="pull-right">
+                              <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            {% endif %}
+
+            <div id="addComedy" class="panel panel-grey object-hide">
+                <div class="panel-heading">
+                    Add Comedy Category</div>
+                <div class="panel-body pan">
+                    {{ form_start(formComedyCate) }}
+                        {{ form_errors(formComedyCate) }}
+                    <div class="form-body pal">
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formComedyCate.categoryName) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formComedyCate.categoryName, {'attr': {'class': 'form-control', 'placeholder':'Category Name', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formComedyCate.category) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formComedyCate.category, {'attr': {'class': 'form-control', 'placeholder':'Category', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions text-right pal">
+                      <a href="#" class="btn cancel-add-com">Cancel</a>&nbsp;&nbsp;
+                        {{ form_widget(formComedyCate.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                    </div>
+                    {{ form_end(formComedyCate) }}
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="row">
+      <section class="panel">
+        <header class="panel-heading">
+          Trailer Category
+          <a id="addTrailObjBtn" class="btn btn-green pull-right"><i class="fa fa-upload"></i>&nbsp;
+              Add </a>
+        </header>
+        <div class="panel-body table-responsive">
+          <div id="trail-cat">
+            {% if trailEntities is empty %}
+                <p> No category has been entered. Please Click on the Add button above to include new Category. </p>
+            {% else %}
+              <table id="mainTrail" class="table table-hover object-show">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Category Name</th>
+                      <th>Category</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for e in trailEntities %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td>
+                                {% if e.categoryName is empty %}
+                                {% else %}
+                                {{ e.categoryName }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if e.category is empty %}
+                                {% else %}
+                                {{ e.category }}
+                                {% endif %}
+                            </td>
+                            <td class="pull-right">
+                              <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            {% endif %}
+
+            <div id="addTrail" class="panel panel-grey object-hide">
+                <div class="panel-heading">
+                    Add Trailer Category</div>
+                <div class="panel-body pan">
+                    {{ form_start(formTrailCate) }}
+                        {{ form_errors(formTrailCate) }}
+                    <div class="form-body pal">
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formTrailCate.categoryName) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formTrailCate.categoryName, {'attr': {'class': 'form-control', 'placeholder':'Category Name', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formTrailCate.category) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formTrailCate.category, {'attr': {'class': 'form-control', 'placeholder':'Category', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions text-right pal">
+                      <a href="#" class="btn cancel-add-trail">Cancel</a>&nbsp;&nbsp;
+                        {{ form_widget(formTrailCate.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                    </div>
+                    {{ form_end(formTrailCate) }}
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="row">
+      <section class="panel">
+        <header class="panel-heading">
+          Content Type
+          <a id="addConTypeObjBtn" class="btn btn-green pull-right"><i class="fa fa-upload"></i>&nbsp;
+              Add </a>
+        </header>
+        <div class="panel-body table-responsive">
+          <div id="con-typ-cat">
+            {% if contTypEntities is empty %}
+                <p> No content type has been set. Please Click on the Add button above to set content type. </p>
+            {% else %}
+              <table id="mainContType" class="table table-hover object-show">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Content Type</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for e in contTypEntities %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td>
+                                {% if e.contentType is empty %}
+                                {% else %}
+                                {{ e.contentType }}
+                                {% endif %}
+                            </td>
+                            <td class="pull-right">
+                              <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            {% endif %}
+
+            <div id="addContType" class="panel panel-grey object-hide">
+                <div class="panel-heading">
+                    Add Content Type</div>
+                <div class="panel-body pan">
+                    {{ form_start(formContType) }}
+                        {{ form_errors(formContType) }}
+                    <div class="form-body pal">
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formContType.contentType) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formContType.contentType, {'attr': {'class': 'form-control', 'placeholder':'Content Type', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions text-right pal">
+                      <a href="#" class="btn cancel-add-conttyp">Cancel</a>&nbsp;&nbsp;
+                        {{ form_widget(formContType.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                    </div>
+                    {{ form_end(formContType) }}
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="row mbl">
+  <div class="col-lg-6">
+    <div class="row">
+      <section class="panel">
+        <header class="panel-heading">
+          Content Level
+          <a id="addConLvlObjBtn" class="btn btn-green pull-right"><i class="fa fa-upload"></i>&nbsp;
+              Add </a>
+        </header>
+        <div class="panel-body table-responsive">
+          <div id="con-lvl-cat">
+            {% if contLvlEntities is empty %}
+                <p> No content level has been entered. Please Click on the Add button above to include new level. </p>
+            {% else %}
+              <table id="mainContLvl" class="table table-hover object-show">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Content Type</th>
+                      <th>Content Type (fullName)</th>
+                      <th>Level</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for e in contLvlEntities %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td>
+                                {% if e.contentType is empty %}
+                                {% else %}
+                                {{ e.contentType }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if e.contentTypeName is empty %}
+                                {% else %}
+                                {{ e.contentTypeName }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if e.level is empty %}
+                                {% else %}
+                                {{ e.level }}
+                                {% endif %}
+                            </td>
+                            <td class="pull-right">
+                              <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            {% endif %}
+
+            <div id="addContLvl" class="panel panel-grey object-hide">
+                <div class="panel-heading">
+                    Add Content Level</div>
+                <div class="panel-body pan">
+                    {{ form_start(formContLvl) }}
+                        {{ form_errors(formContLvl) }}
+                    <div class="form-body pal">
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formContLvl.contentType) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formContLvl.contentType, {'attr': {'class': 'form-control', 'placeholder':'Option Type', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formContLvl.level) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formContLvl.level, {'attr': {'class': 'form-control', 'placeholder':'Enter Level', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions text-right pal">
+                      <a href="#" class="btn cancel-add-contlvl">Cancel</a>&nbsp;&nbsp;
+                        {{ form_widget(formContLvl.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                    </div>
+                    {{ form_end(formContLvl) }}
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="row">
+      <section class="panel">
+        <header class="panel-heading">
+          Content Level Price
+          <a id="addConLvlPrcObjBtn" class="btn btn-green pull-right"><i class="fa fa-upload"></i>&nbsp;
+              Add </a>
+        </header>
+        <div class="panel-body table-responsive">
+          <div id="con-lvl-prc-cat">
+            {% if contLvlPrcEntities is empty %}
+                <p> No Price has been set. Please Click on the Add button above to set price for different content Type. </p>
+            {% else %}
+              <table id="mainContLvlPrc" class="table table-hover object-show">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Content Level</th>
+                      <th>Price Tag</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for e in contLvlPrcEntities %}
+                        <tr>
+                            <td>{{ e.id }}</td>
+                            <td>
+                                {% if e.level is empty %}
+                                {% else %}
+                                {{ e.level.contentTypeName }} " " {{ e.level.level }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if e.priceTag is empty %}
+                                {% else %}
+                                {{ e.priceTag }}
+                                {% endif %}
+                            </td>
+                            <td class="pull-right">
+                              <a class="btn btn-default btn-xs clearfix"><i class="fa fa-folder-open"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>
+                              <a class="btn btn-default btn-xs"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+            {% endif %}
+            <div id="addContLvlPrc" class="panel panel-grey object-hide">
+                <div class="panel-heading">
+                    Add Content Level Price</div>
+                <div class="panel-body pan">
+                    {{ form_start(formContLvlPrc) }}
+                        {{ form_errors(formContLvlPrc) }}
+                    <div class="form-body pal">
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formContLvlPrc.level) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formContLvlPrc.level, {'attr': {'class': 'form-control', 'placeholder':'Enter Level', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-icon right">
+                                {{ form_errors(formContLvlPrc.priceTag) }}
+                                <i class="fa fa-user"></i>
+                                {{ form_widget(formContLvlPrc.priceTag, {'attr': {'class': 'form-control', 'placeholder':'Enter Price Tag', 'autofocus':''}}) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions text-right pal">
+                      <a href="#" class="btn cancel-add-contlvlprc">Cancel</a>&nbsp;&nbsp;
+                        {{ form_widget(formContLvlPrc.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                    </div>
+                    {{ form_end(formContLvlPrc) }}
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<script>
+    //For my re-arranging blocks on add object
+    $('a#addMovSerObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainMovSer').removeClass('object-show');
+      $('#mainMovSer').addClass('object-hide');
+      $('#addMovSer').removeClass('object-hide');
+      $('#addMovSer').addClass('object-show');
+    });
+
+    $('a.cancel-add-mov').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addMovSer').removeClass('object-show');
+      $('#addMovSer').addClass('object-hide');
+
+      $('#mainMovSer').removeClass('object-hide');
+      $('#mainMovSer').addClass('object-show');
+    });
+
+    $('a#addMusObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainMusVids').removeClass('object-show');
+      $('#mainMusVids').addClass('object-hide');
+      $('#addMusVids').removeClass('object-hide');
+      $('#addMusVids').addClass('object-show');
+    });
+
+    $('a.cancel-add-musvid').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addMusVids').removeClass('object-show');
+      $('#addMusVids').addClass('object-hide');
+
+      $('#mainMusVids').removeClass('object-hide');
+      $('#mainMusVids').addClass('object-show');
+    });
+
+    $('a#addAuthObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainAuthVids').removeClass('object-show');
+      $('#mainAuthVids').addClass('object-hide');
+      $('#addAuthVids').removeClass('object-hide');
+      $('#addAuthVids').addClass('object-show');
+    });
+
+    $('a.cancel-add-authvid').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addAuthVids').removeClass('object-show');
+      $('#addAuthVids').addClass('object-hide');
+
+      $('#mainAuthVids').removeClass('object-hide');
+      $('#mainAuthVids').addClass('object-show');
+    });
+
+    $('a#addComObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainComedy').removeClass('object-show');
+      $('#mainComedy').addClass('object-hide');
+      $('#addComedy').removeClass('object-hide');
+      $('#addComedy').addClass('object-show');
+    });
+
+    $('a.cancel-add-com').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addComedy').removeClass('object-show');
+      $('#addComedy').addClass('object-hide');
+
+      $('#mainComedy').removeClass('object-hide');
+      $('#mainComedy').addClass('object-show');
+    });
+
+    $('a#addTrailObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainTrail').removeClass('object-show');
+      $('#mainTrail').addClass('object-hide');
+      $('#addTrail').removeClass('object-hide');
+      $('#addTrail').addClass('object-show');
+    });
+
+    $('a.cancel-add-trail').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addTrail').removeClass('object-show');
+      $('#addTrail').addClass('object-hide');
+
+      $('#mainTrail').removeClass('object-hide');
+      $('#mainTrail').addClass('object-show');
+    });
+
+    $('a#addConTypeObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainContType').removeClass('object-show');
+      $('#mainContType').addClass('object-hide');
+      $('#addContType').removeClass('object-hide');
+      $('#addContType').addClass('object-show');
+    });
+
+    $('a.cancel-add-conttyp').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addContType').removeClass('object-show');
+      $('#addContType').addClass('object-hide');
+
+      $('#mainContType').removeClass('object-hide');
+      $('#mainContType').addClass('object-show');
+    });
+
+    $('a#addConLvlObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainContLvl').removeClass('object-show');
+      $('#mainContLvl').addClass('object-hide');
+      $('#addContLvl').removeClass('object-hide');
+      $('#addContLvl').addClass('object-show');
+    });
+
+    $('a.cancel-add-contlvl').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addContLvl').removeClass('object-show');
+      $('#addContLvl').addClass('object-hide');
+
+      $('#mainContLvl').removeClass('object-hide');
+      $('#mainContLvl').addClass('object-show');
+    });
+
+    $('a#addConLvlPrcObjBtn').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check if working");
+      $('#mainContLvlPrc').removeClass('object-show');
+      $('#mainContLvlPrc').addClass('object-hide');
+      $('#addContLvlPrc').removeClass('object-hide');
+      $('#addContLvlPrc').addClass('object-show');
+    });
+
+    $('a.cancel-add-contlvlprc').bind('click',function(e){
+      e.preventDefault();
+
+      console.log("To check cancel if working");
+
+      $('#addContLvlPrc').removeClass('object-show');
+      $('#addContLvlPrc').addClass('object-hide');
+
+      $('#mainContLvlPrc').removeClass('object-hide');
+      $('#mainContLvlPrc').addClass('object-show');
+    });
+
+    $( '#formCate' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#mov-ser-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function (html) {
+              $('#mov-ser-cat').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              //alert( "Submitted Succesfully" );
+              $('#loading').remove();
+              $('#mov-ser-cat').fadeIn();
+          }
+      });
+    });
+
+    $( '#formMuzVidsCate' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#mus-vids-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function (html) {
+              $('#mus-vids-cat').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              //alert( "Submitted Succesfully" );
+              $('#loading').remove();
+              $('#mus-vids-cat').fadeIn();
+          }
+      });
+    });
+
+    $( '#formAuthVidsCate' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#auth-vids-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function (html) {
+              $('#auth-vids-cat').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              //alert( "Submitted Succesfully" );
+              $('#loading').remove();
+              $('#auth-vids-cat').fadeIn();
+          }
+      });
+    });
+
+    $( '#formComedyCate' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#com-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function (html) {
+              $('#com-cat').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              //alert( "Submitted Succesfully" );
+              $('#loading').remove();
+              $('#com-cat').fadeIn();
+          }
+      });
+    });
+
+    $( '#formTrailCate' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#trail-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function (html) {
+              $('#trail-cat').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              //alert( "Submitted Succesfully" );
+              $('#loading').remove();
+              $('#trail-cat').fadeIn();
+          }
+      });
+    });
+
+    $( '#formContType' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#con-typ-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function (html) {
+              $('#con-typ-cat').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              //alert( "Submitted Succesfully" );
+              $('#loading').remove();
+              $('#con-typ-cat').fadeIn();
+          }
+      });
+    });
+
+    $( '#formContLvl' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#con-lvl-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function (html) {
+              $('#con-lvl-cat').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              //alert( "Submitted Succesfully" );
+              $('#loading').remove();
+              $('#con-lvl-cat').fadeIn();
+          }
+      });
+    });
+
+    $( '#formContLvlPrc' ).submit(function(e) {
+      //alert( "Handler for .submit() called." );
+      e.preventDefault();
+
+      $this = $(this);
+      $url = $this.attr("action");
+      $('#con-lvl-prc-cat').hide().parent().append('<div id="loading" class="center"><i class="fa fa-refresh fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+      $.ajax({
+          // the URL for the request
+          url: $url,
+          // whether this is a POST or GET request
+          type: "POST",
+          // the type of data we expect back
+          data: $this.serialize(),
+          // code to run if the request succeeds;
+          // the response is passed to the function
+          success: function (html) {
+              $('#con-lvl-prc-cat').html(html);
+              //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+              //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+          },
+          // code to run if the request fails; the raw request and
+          // status codes are passed to the function
+          error: function (xhr, status, errorThrown) {
+              alert("Sorry, there was a problem!");
+              //console.log( "Error: " + errorThrown );
+              //console.log( "Status: " + status );
+              //console.dir( xhr );
+          },
+          // code to run regardless of success or failure
+          complete: function (xhr, status) {
+              //alert( "Submitted Succesfully" );
+              $('#loading').remove();
+              $('#con-lvl-prc-cat').fadeIn();
+          }
+      });
+    });
+
+</script>

@@ -1,0 +1,197 @@
+<div class="row mbl object-show">
+  <div class="col-lg-12">
+    <div class="panel">
+        <a id="addEpisodeObjBtn" class="btn btn-green"><i class="fa fa-upload"></i>&nbsp;
+            Add Episode</a>
+    </div>
+  </div>
+</div>
+{% if episodeEntities is empty %}
+    <p> No Episodes to display </p>
+{% else %}
+  <table id="episTable" class="table table-hover object-show">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Episode Name:</th>
+        <th>Episode Title:</th>
+        <th>Serie Name</th>
+        <th>Season</th>
+        <th>Episode Length</th>
+        {#<th></th>#}
+      </tr>
+    </thead>
+    <tbody>
+      {% for e in episodeEntities %}
+          <tr>
+              <td>{{ e.episodeNum }}</td>
+              <td>
+                  {% if e.episodeName is empty %}
+                  {% else %}
+                  {{ e.episodeName }}
+                  {% endif %}
+              </td>
+              <td>
+                  {% if e.episodeTitle is empty %}
+                  {% else %}
+                  {{ e.episodeTitle }}
+                  {% endif %}
+              </td>
+              <td>
+                  {% if e.season.serie.serieName is empty %}
+                  {% else %}
+                  {{ e.season.serie.serieName }}
+                  {% endif %}
+              </td>
+              <td>
+                  {% if e.season.seasonTitle is empty %}
+                  {% else %}
+                  {{ e.season.seasonTitle }}
+                  {% endif %}
+              </td>
+              <td>
+                  {% if e.episodeLength is empty %}
+                  {% else %}
+                  {{ e.episodeLength }}
+                  {% endif %}
+              </td>
+              {#<td class="pull-right">
+                <a class="btn btn-default btn-xs"><i class="fa fa-folder-open"></i></a>
+                <!--<a class="btn btn-default btn-xs"><i class="fa fa-pencil-square-o"></i></a>-->
+              </td>#}
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endif %}
+
+<div id="addEpisodeObject" class="row mbl center object-hide">
+    <div class="col-lg-4 col-lg-offset-4">
+        <div class="panel panel-grey">
+            <div class="panel-heading">
+                Add Episode</div>
+            <div class="panel-body pan">
+                {{ form_start(formAddEpisode) }}
+                    {{ form_errors(formAddEpisode) }}
+                <div class="form-body pal">
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(formAddEpisode.episodeName) }}
+                            <i class="fa fa-user"></i>
+                            {{ form_widget(formAddEpisode.episodeName, {'attr': {'class': 'form-control', 'placeholder':'Enter Episode Name without spaces', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(formAddEpisode.episodeTitle) }}
+                            <i class="fa fa-user"></i>
+                            {{ form_widget(formAddEpisode.episodeTitle, {'attr': {'class': 'form-control', 'placeholder':'Enter Episode Name with spaces', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                    {{ form_errors(formAddEpisode.description) }}
+                    {{ form_widget(formAddEpisode.description, {'attr': {'class': 'form-control','rows':'5', 'placeholder':'Description', 'autofocus':''}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(formAddEpisode.season) }}
+                        {{ form_widget(formAddEpisode.season, {'attr': {'class': 'form-control', 'style': 'display: none;', 'autofocus':''}}) }}
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(formAddEpisode.episodeLength) }}
+                            <i class="fa fa-window-minimize"></i>
+                            {{ form_widget(formAddEpisode.episodeLength, {'attr': {'class': 'form-control', 'placeholder':'Episode Length', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_errors(formAddEpisode.episodeNum) }}
+                            <i class="fa fa-user"></i>
+                            {{ form_widget(formAddEpisode.episodeNum, {'attr': {'class': 'form-control', 'placeholder':'Enter Episode Number', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-icon right">
+                            {{ form_label(formAddEpisode.videoFile) }}
+                            {{ form_errors(formAddEpisode.videoFile) }}
+                            <i class="fa fa-film"></i>
+                            {{ form_widget(formAddEpisode.videoFile, {'attr': {'class': '', 'placeholder':'Choose Video File', 'autofocus':''}}) }}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-actions text-right pal">
+                  <a href="#" class="btn cancel-add-episodes">Cancel</a>&nbsp;&nbsp;
+                    {{ form_widget(formAddEpisode.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                </div>
+                {{ form_end(formAddEpisode) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+//For Adding Episodes
+$('a#addEpisodeObjBtn').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check if working");
+  $('#episTable').removeClass('object-show');
+  $('#episTable').addClass('object-hide');
+  $('#addEpisodeObject').removeClass('object-hide');
+  $('#addEpisodeObject').addClass('object-show');
+});
+
+$('a.cancel-add-episodes').bind('click',function(e){
+  e.preventDefault();
+
+  console.log("To check cancel if working");
+
+  $('#addEpisodeObject').removeClass('object-show');
+  $('#addEpisodeObject').addClass('object-hide');
+
+  $('#episTable').removeClass('object-hide');
+  $('#episTable').addClass('object-show');
+});
+
+{#
+$( '#formAddEpisode' ).submit(function(e) {
+  alert( "Handler for .submit() called." );
+  e.preventDefault();
+/*
+  $this = $(this);
+  $url = $this.attr("action");
+  $('#content').hide().parent().append('<div id="loading" class="center"><i class="fa fa-cog fa-spin fa-3x stat-elem lg loading-icon"></i>Saving...<div class="center"></div></div>');
+
+  $.ajax({
+      // the URL for the request
+      url: $url,
+      // whether this is a POST or GET request
+      type: "POST",
+      // the type of data we expect back
+      data: $this.serialize(),
+      // code to run if the request succeeds;
+      // the response is passed to the function
+      success: function () {
+          //$('#content').html(html);
+          //$( "<h1/>" ).text( json.title ).appendTo( "body" );
+          //$( "<div class=\"content\"/>").html( json.html ).appendTo( "body" );
+      },
+      // code to run if the request fails; the raw request and
+      // status codes are passed to the function
+      error: function (xhr, status, errorThrown) {
+          alert("Sorry, there was a problem!");
+          //console.log( "Error: " + errorThrown );
+          //console.log( "Status: " + status );
+          //console.dir( xhr );
+      },
+      // code to run regardless of success or failure
+      complete: function (xhr, status) {
+          alert( "Submitted Succesfully" );
+          $('#loading').remove();
+          $('#content').fadeIn();
+      }
+  });*/
+});
+#}
+</script>

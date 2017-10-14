@@ -1,0 +1,16 @@
+jumain_default:
+    resource: "@JUMAINDefaultBundle/Resources/config/routing.yml"
+    prefix:   /
+
+jumain_health_api:
+    type:     rest
+    resource: "@JUMAINHealthBundle/Resources/config/routing.yml"
+    prefix:   /api/
+
+jumain_admin:
+    resource: "@JUMAINAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin/
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
