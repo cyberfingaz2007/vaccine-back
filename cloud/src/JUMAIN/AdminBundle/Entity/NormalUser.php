@@ -26,13 +26,7 @@ class NormalUser extends User
      */
     protected $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\ManyToOne(targetEntity="JUMAIN\ConsumerBundle\Entity\Consumer", inversedBy="user", cascade={"persist"})
-     * @ORM\JoinColumn(name="ConsumerID", referencedColumnName="id", nullable=true)
-     */
-    private $consumer;
+ 
 
     /**
      * @var \DateTime
@@ -111,27 +105,5 @@ class NormalUser extends User
         return $this->dateAdded;
     }
 
-    /**
-     * Set consumer
-     *
-     * @param \JUMAIN\ConsumerBundle\Entity\Consumer $consumer
-     *
-     * @return NormalUser
-     */
-    public function setConsumer(\JUMAIN\ConsumerBundle\Entity\Consumer $consumer = null)
-    {
-        $this->consumer = $consumer;
-
-        return $this;
-    }
-
-    /**
-     * Get consumer
-     *
-     * @return \JUMAIN\ConsumerBundle\Entity\Consumer
-     */
-    public function getConsumer()
-    {
-        return $this->consumer;
-    }
+    
 }
