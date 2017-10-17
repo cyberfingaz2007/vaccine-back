@@ -3,6 +3,8 @@
 namespace JUMAIN\HealthBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\SerializerBundle\Annotation\ExclusionPolicy;
+use JMS\SerializerBundle\Annotation\Expose;
 
 /**
  * Patient
@@ -24,21 +26,21 @@ class Patient
     /**
      * @var string
      *
-     * @ORM\Column(name="FullName", type="string", length=255, unique=true)
+     * @ORM\Column(name="FullName", type="string", length=255, unique=true, nullable=true)
      */
     private $fullName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Sex", type="string", length=30)
+     * @ORM\Column(name="Sex", type="string", length=30, nullable=true)
      */
     private $sex;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="DateOfBirth", type="date")
+     * @ORM\Column(name="DateOfBirth", type="date", nullable=true)
      */
     private $dateOfBirth;
 
@@ -59,7 +61,7 @@ class Patient
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="CreatedAt", type="datetime")
+     * @ORM\Column(name="CreatedAt", type="datetime", nullable=true)
      */
     private $createdAt;
 

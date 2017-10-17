@@ -3,6 +3,8 @@
 namespace JUMAIN\HealthBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\SerializerBundle\Annotation\ExclusionPolicy;
+use JMS\SerializerBundle\Annotation\Expose;
 
 /**
  * Project
@@ -24,14 +26,14 @@ class Project
     /**
      * @var string
      *
-     * @ORM\Column(name="ProjectName", type="string", length=255)
+     * @ORM\Column(name="ProjectName", type="string", length=255, nullable=true)
      */
     private $projectName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Description", type="string", length=255)
+     * @ORM\Column(name="Description", type="string", length=255, nullable=true)
      */
     private $description;
 
@@ -60,21 +62,28 @@ class Project
     /**
      * @var float
      *
-     * @ORM\Column(name="Budget", type="float")
+     * @ORM\Column(name="Budget", type="float", nullable=true)
      */
     private $budget;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="ProjectStrtDate", type="datetime")
+     * @ORM\Column(name="ProjectStrtDate", type="datetime", nullable=true)
      */
     private $projectStrtDate;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="ProjectStatus", type="string", length=50, nullable=true)
+     */
+    private $projectStatus;
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="CreatedAt", type="datetime")
+     * @ORM\Column(name="CreatedAt", type="datetime", nullable=true)
      */
     private $createdAt;
 
@@ -84,6 +93,12 @@ class Project
      * @ORM\Column(name="UpdatedAt", type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="MedicalDetail", mappedBy="project")
+     *
+     */
+    private $patientDetail;
 
 
 
@@ -287,5 +302,70 @@ class Project
     public function getCommunity()
     {
         return $this->community;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->patientDetail = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Set projectStrtDate
+     *
+     * @param \DateTime $projectStrtDate
+     *
+     * @return Project
+     */
+    public function setProjectStrtDate($projectStrtDate)
+    {
+        $this->projectStrtDate = $projectStrtDate;
+
+        return $this;
+    }
+
+    /**
+     * Get projectStrtDate
+     *
+     * @return \DateTime
+     */
+    public function getProjectStrtDate()
+    {
+        return $this->projectStrtDate;
+    }
+
+    /**
+     * Add patientDetail
+     *
+     * @param \JUMAIN\HealthBundle\Entity\MedicalDetail $patientDetail
+     *
+     * @return Project
+     */
+    public function addPatientDetail(\JUMAIN\HealthBundle\Entity\MedicalDetail $patientDetail)
+    {
+        $this->patientDetail[] = $patientDetail;
+
+        return $this;
+    }
+
+    /**
+     * Remove patientDetail
+     *
+     * @param \JUMAIN\HealthBundle\Entity\MedicalDetail $patientDetail
+     */
+    public function removePatientDetail(\JUMAIN\HealthBundle\Entity\MedicalDetail $patientDetail)
+    {
+        $this->patientDetail->removeElement($patientDetail);
+    }
+
+    /**
+     * Get patientDetail
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPatientDetail()
+    {
+        return $this->patientDetail;
     }
 }

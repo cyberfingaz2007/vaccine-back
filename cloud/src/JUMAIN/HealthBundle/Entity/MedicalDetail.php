@@ -3,6 +3,8 @@
 namespace JUMAIN\HealthBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\SerializerBundle\Annotation\ExclusionPolicy;
+use JMS\SerializerBundle\Annotation\Expose;
 
 /**
  * MedicalDetail
@@ -58,6 +60,14 @@ class MedicalDetail
     private $description;
 
     /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="patientDetail", cascade={"persist"})
+     * @ORM\JoinColumn(name="ProjectID", referencedColumnName="id", nullable=true)
+     */
+    private $project;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="current", type="boolean", nullable=true)
@@ -67,7 +77,7 @@ class MedicalDetail
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="CreatedAt", type="datetime")
+     * @ORM\Column(name="CreatedAt", type="datetime", nullable=true)
      */
     private $createdAt;
 
@@ -279,5 +289,29 @@ class MedicalDetail
     public function getPatient()
     {
         return $this->patient;
+    }
+
+    /**
+     * Set project
+     *
+     * @param \JUMAIN\HealthBundle\Entity\Project $project
+     *
+     * @return MedicalDetail
+     */
+    public function setProject(\JUMAIN\HealthBundle\Entity\Project $project = null)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \JUMAIN\HealthBundle\Entity\Project
+     */
+    public function getProject()
+    {
+        return $this->project;
     }
 }

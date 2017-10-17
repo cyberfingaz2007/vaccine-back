@@ -48,4 +48,13 @@ class PatientRepository extends \Doctrine\ORM\EntityRepository
                     ->getSingleScalarResult();
     return $countAllChild;
   }
+
+  public function findAllRegPatients(){
+    $patients = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT p FROM JUMAINHealthBundle:Patient p
+                    ORDER BY p.createdAt ASC ')
+                    ->getResult();
+    return $patients;
+  }
 }

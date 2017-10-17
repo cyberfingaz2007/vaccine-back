@@ -58,6 +58,14 @@ class MedicalDetail
     private $description;
 
     /**
+     * @var int
+     *
+     * @ORM\ManyToOne(targetEntity="Project", inversedBy="patientDetail", cascade={"persist"})
+     * @ORM\JoinColumn(name="ProjectID", referencedColumnName="id", nullable=true)
+     */
+    private $project;
+
+    /**
      * @var bool
      *
      * @ORM\Column(name="current", type="boolean", nullable=true)
@@ -78,5 +86,206 @@ class MedicalDetail
      */
     private $updatedAt;
 
-}
 
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set vaccinationStatus
+     *
+     * @param string $vaccinationStatus
+     *
+     * @return MedicalDetail
+     */
+    public function setVaccinationStatus($vaccinationStatus)
+    {
+        $this->vaccinationStatus = $vaccinationStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get vaccinationStatus
+     *
+     * @return string
+     */
+    public function getVaccinationStatus()
+    {
+        return $this->vaccinationStatus;
+    }
+
+    /**
+     * Set vaccinationDate
+     *
+     * @param \DateTime $vaccinationDate
+     *
+     * @return MedicalDetail
+     */
+    public function setVaccinationDate($vaccinationDate)
+    {
+        $this->vaccinationDate = $vaccinationDate;
+
+        return $this;
+    }
+
+    /**
+     * Get vaccinationDate
+     *
+     * @return \DateTime
+     */
+    public function getVaccinationDate()
+    {
+        return $this->vaccinationDate;
+    }
+
+    /**
+     * Set employeeName
+     *
+     * @param string $employeeName
+     *
+     * @return MedicalDetail
+     */
+    public function setEmployeeName($employeeName)
+    {
+        $this->employeeName = $employeeName;
+
+        return $this;
+    }
+
+    /**
+     * Get employeeName
+     *
+     * @return string
+     */
+    public function getEmployeeName()
+    {
+        return $this->employeeName;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return MedicalDetail
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set current
+     *
+     * @param boolean $current
+     *
+     * @return MedicalDetail
+     */
+    public function setCurrent($current)
+    {
+        $this->current = $current;
+
+        return $this;
+    }
+
+    /**
+     * Get current
+     *
+     * @return boolean
+     */
+    public function getCurrent()
+    {
+        return $this->current;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return MedicalDetail
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return MedicalDetail
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set patient
+     *
+     * @param \JUMAIN\HealthBundle\Entity\Patient $patient
+     *
+     * @return MedicalDetail
+     */
+    public function setPatient(\JUMAIN\HealthBundle\Entity\Patient $patient = null)
+    {
+        $this->patient = $patient;
+
+        return $this;
+    }
+
+    /**
+     * Get patient
+     *
+     * @return \JUMAIN\HealthBundle\Entity\Patient
+     */
+    public function getPatient()
+    {
+        return $this->patient;
+    }
+}

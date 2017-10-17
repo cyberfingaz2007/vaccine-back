@@ -10,4 +10,12 @@ namespace JUMAIN\HealthBundle\Repository;
  */
 class ProjectRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findAllRegProjects(){
+    $projects = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT p FROM JUMAINHealthBundle:Project p
+                    ORDER BY p.projectName ASC ')
+                    ->getResult();
+    return $projects;
+  }
 }

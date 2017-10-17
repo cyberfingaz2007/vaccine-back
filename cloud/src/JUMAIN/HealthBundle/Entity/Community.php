@@ -3,6 +3,8 @@
 namespace JUMAIN\HealthBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\SerializerBundle\Annotation\ExclusionPolicy;
+use JMS\SerializerBundle\Annotation\Expose;
 
 /**
  * Community
