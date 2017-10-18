@@ -118,20 +118,9 @@ class DefaultController extends FOSRestController
 
         $project = $em->getRepository('JUMAINHealthBundle:Project')->find($id);
 
-        $today = \DateTime("now");
-        $yr = $today->format('y');
-        $mth = $today->format('m');
-        $dy = $today->format('d');
-        $hr = $today->format('hh');
-        $min = $today->format('mm');
-        $secs = $today->format('ss');
-
-        $uniqueNumber = "jum_vacc_" . $yr . $mth . $dy . $hr . $min . $secs;
-
         $patient->setFullName($data['fullName']);
         $patient->setSex($data['sex']);
         $patient->setDateOfBirth($data['dob']);
-        $patient->setUniqueNumber($uniqueNumber);
         $patient->setResidence($data['residence']);
 
         $detail->setVaccinationStatus($vaccinationStatus);
@@ -206,6 +195,29 @@ class DefaultController extends FOSRestController
                 ->findAllRegCommunity();
 
         $view = $this->view($totCommunity);
+
+        return $this->handleView($view);
+    }
+
+    public function postNewProjectAction(Request $request)
+    {
+        $project = new Project();
+
+        $em = $this->getDoctrine()->getManager();
+        
+        $data = $request->request->get('dataBag');
+
+        $project->setCommunityName($data['communityName']);
+        $project->setMaleAbv10($data['maleAbv10']);
+        $project->setFemBtw10N15($data['femBtw10N15']);
+        $project->setChildBel10($data['childBel10']);
+        $project->setFemAbv15($data['femAbv15']);
+        $project->setCurrent(true);
+
+        $em->persist($project);
+        $em->flush();
+
+        $view = $this->view($data);
 
         return $this->handleView($view);
     }

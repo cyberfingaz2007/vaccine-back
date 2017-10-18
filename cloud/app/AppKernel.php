@@ -35,6 +35,7 @@ class AppKernel extends Kernel
             new FOS\HttpCacheBundle\FOSHttpCacheBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
             //new Vich\UploaderBundle\VichUploaderBundle(),
+            //new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             
         );
 

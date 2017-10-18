@@ -32,3 +32,33 @@ jumain_health_tot_project_time_elapsed:
     path:     /TotTimeElapsed
     defaults: { _controller: JUMAINHealthBundle:Default:getTotalTimeElapsed }
     methods:   [GET]
+
+jumain_health_new_patient:
+    path:     /new-patient
+    defaults: { _controller: JUMAINHealthBundle:Default:postNewPatient }
+    methods:   [POST]
+
+jumain_health_all_patients:
+    path:     /all-patients
+    defaults: { _controller: JUMAINHealthBundle:Default:getAllPatients }
+    methods:   [GET]
+
+jumain_health_new_project:
+    path:     /new-project
+    defaults: { _controller: JUMAINHealthBundle:Default:postNewProject }
+    methods:   [POST]
+
+jumain_health_all_projects:
+    path:     /all-projects
+    defaults: { _controller: JUMAINHealthBundle:Default:getAllProjects }
+    methods:   [GET]
+
+jumain_health_new_community:
+    path:     /new-community
+    defaults: { _controller: JUMAINHealthBundle:Default:postNewCommunity }
+    methods:   [POST]
+
+jumain_health_all_communities:
+    path:     /all-communities
+    defaults: { _controller: JUMAINHealthBundle:Default:getAllCommunities }
+    methods:   [GET]

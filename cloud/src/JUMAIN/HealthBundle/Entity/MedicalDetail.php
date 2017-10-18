@@ -3,14 +3,20 @@
 namespace JUMAIN\HealthBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\SerializerBundle\Annotation\ExclusionPolicy;
-use JMS\SerializerBundle\Annotation\Expose;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * MedicalDetail
  *
  * @ORM\Table(name="medical_detail")
  * @ORM\Entity(repositoryClass="JUMAIN\HealthBundle\Repository\MedicalDetailRepository")
+ *
+ * @ORM\HasLifecycleCallbacks
+ *
+ * @ExclusionPolicy("all")
  */
 class MedicalDetail
 {
@@ -20,6 +26,7 @@ class MedicalDetail
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -35,6 +42,7 @@ class MedicalDetail
      * @var string
      *
      * @ORM\Column(name="VaccinationStatus", type="string", length=50, nullable=true)
+     * @Expose
      */
     private $vaccinationStatus;
 
@@ -42,6 +50,7 @@ class MedicalDetail
      * @var \DateTime
      *
      * @ORM\Column(name="VaccinationDate", type="datetime", nullable=true)
+     * @Expose
      */
     private $vaccinationDate;
 
@@ -49,6 +58,7 @@ class MedicalDetail
      * @var string
      *
      * @ORM\Column(name="EmployeeName", type="string", length=100, nullable=true)
+     * @Expose
      */
     private $employeeName;
 
@@ -56,6 +66,7 @@ class MedicalDetail
      * @var string
      *
      * @ORM\Column(name="Description", type="text", nullable=true)
+     * @Expose
      */
     private $description;
 
@@ -78,6 +89,7 @@ class MedicalDetail
      * @var \DateTime
      *
      * @ORM\Column(name="CreatedAt", type="datetime", nullable=true)
+     * @Expose
      */
     private $createdAt;
 
@@ -85,6 +97,7 @@ class MedicalDetail
      * @var \DateTime
      *
      * @ORM\Column(name="UpdatedAt", type="datetime", nullable=true)
+     * @Expose
      */
     private $updatedAt;
 
@@ -223,12 +236,13 @@ class MedicalDetail
      * Set createdAt
      *
      * @param \DateTime $createdAt
+     * @ORM\PrePersist
      *
      * @return MedicalDetail
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new \DateTime('now');
 
         return $this;
     }
@@ -247,12 +261,14 @@ class MedicalDetail
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     * @ORM\PrePersist
+     * @ORM\PostPersist
      *
      * @return MedicalDetail
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = new \DateTime('now');
 
         return $this;
     }

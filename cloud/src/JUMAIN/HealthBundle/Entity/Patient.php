@@ -3,14 +3,21 @@
 namespace JUMAIN\HealthBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\SerializerBundle\Annotation\ExclusionPolicy;
-use JMS\SerializerBundle\Annotation\Expose;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
+use \DateTime;
 
 /**
  * Patient
  *
  * @ORM\Table(name="patient")
  * @ORM\Entity(repositoryClass="JUMAIN\HealthBundle\Repository\PatientRepository")
+ *
+ * @ORM\HasLifecycleCallbacks
+ *
+ * @ExclusionPolicy("all")
  */
 class Patient
 {
@@ -20,6 +27,7 @@ class Patient
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -27,6 +35,7 @@ class Patient
      * @var string
      *
      * @ORM\Column(name="FullName", type="string", length=255, unique=true, nullable=true)
+     * @Expose
      */
     private $fullName;
 
@@ -34,6 +43,7 @@ class Patient
      * @var string
      *
      * @ORM\Column(name="Sex", type="string", length=30, nullable=true)
+     * @Expose
      */
     private $sex;
 
@@ -41,13 +51,15 @@ class Patient
      * @var \DateTime
      *
      * @ORM\Column(name="DateOfBirth", type="date", nullable=true)
+     * @Expose
      */
     private $dateOfBirth;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="UniqueNumber", type="string", length=255, unique=true)
+     * @ORM\Column(name="UniqueNumber", type="string", length=255, nullable=true)
+     * @Expose
      */
     private $uniqueNumber;
 
@@ -55,6 +67,7 @@ class Patient
      * @var string
      *
      * @ORM\Column(name="Residence", type="string", length=255, nullable=true)
+     * @Expose
      */
     private $residence;
 
@@ -62,6 +75,7 @@ class Patient
      * @var \DateTime
      *
      * @ORM\Column(name="CreatedAt", type="datetime", nullable=true)
+     * @Expose
      */
     private $createdAt;
 
@@ -69,11 +83,13 @@ class Patient
      * @var \DateTime
      *
      * @ORM\Column(name="UpdatedAt", type="datetime", nullable=true)
+     * @Expose
      */
     private $updatedAt;
 
     /**
      * @ORM\OneToMany(targetEntity="MedicalDetail", mappedBy="patient")
+     * @Expose
      *
      */
     private $detail;
@@ -172,10 +188,26 @@ class Patient
      *
      * @param string $uniqueNumber
      *
+     * @ORM\PrePersist
+     *
      * @return Patient
      */
-    public function setUniqueNumber($uniqueNumber)
+    public function setUniqueNumber()
     {
+        //DateTime::createFromFormat('U.u', microtime(TRUE));
+        //$today = new \DateTime("now");
+        $today = DateTime::createFromFormat('U.u', microtime(TRUE));
+        $yr = $today->format('Y');
+        $mth = $today->format('m');
+        $dy = $today->format('d');
+        $hr = $today->format('H');
+        $min = $today->format('i');
+        $secs = $today->format('s');
+        $msecs = $today->format('u');
+        
+
+        $uniqueNumber = "jum_vacc_" . $yr . $mth . $dy . $hr . $min . $secs . $msecs;
+
         $this->uniqueNumber = $uniqueNumber;
 
         return $this;
@@ -219,12 +251,13 @@ class Patient
      * Set createdAt
      *
      * @param \DateTime $createdAt
+     * @ORM\PrePersist
      *
      * @return Patient
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new \DateTime('now');
 
         return $this;
     }
@@ -243,12 +276,14 @@ class Patient
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     * @ORM\PrePersist
+     * @ORM\PostUpdate
      *
      * @return Patient
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = new \DateTime('now');
 
         return $this;
     }

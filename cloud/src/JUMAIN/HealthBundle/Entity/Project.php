@@ -3,14 +3,20 @@
 namespace JUMAIN\HealthBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\SerializerBundle\Annotation\ExclusionPolicy;
-use JMS\SerializerBundle\Annotation\Expose;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Project
  *
  * @ORM\Table(name="project")
  * @ORM\Entity(repositoryClass="JUMAIN\HealthBundle\Repository\ProjectRepository")
+ *
+ * @ORM\HasLifecycleCallbacks
+ *
+ * @ExclusionPolicy("all")
  */
 class Project
 {
@@ -20,6 +26,7 @@ class Project
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -27,6 +34,7 @@ class Project
      * @var string
      *
      * @ORM\Column(name="ProjectName", type="string", length=255, nullable=true)
+     * @Expose
      */
     private $projectName;
 
@@ -34,6 +42,7 @@ class Project
      * @var string
      *
      * @ORM\Column(name="Description", type="string", length=255, nullable=true)
+     * @Expose
      */
     private $description;
 
@@ -42,6 +51,8 @@ class Project
      *
      * @ORM\ManyToOne(targetEntity="Community", inversedBy="project", cascade={"persist"})
      * @ORM\JoinColumn(name="CommunityID", referencedColumnName="id", nullable=true)
+     *
+     * @Expose
      */
     private $community;
 
@@ -49,6 +60,7 @@ class Project
      * @var int
      *
      * @ORM\Column(name="NumOfFieldWorkers", type="integer", nullable=true)
+     * @Expose
      */
     private $numOfFieldWorkers;
 
@@ -56,6 +68,7 @@ class Project
      * @var int
      *
      * @ORM\Column(name="TimeSpan", type="integer", nullable=true)
+     * @Expose
      */
     private $timeSpan;
 
@@ -63,6 +76,7 @@ class Project
      * @var float
      *
      * @ORM\Column(name="Budget", type="float", nullable=true)
+     * @Expose
      */
     private $budget;
 
@@ -70,6 +84,7 @@ class Project
      * @var \DateTime
      *
      * @ORM\Column(name="ProjectStrtDate", type="datetime", nullable=true)
+     * @Expose
      */
     private $projectStrtDate;
 
@@ -77,6 +92,7 @@ class Project
      * @var string
      *
      * @ORM\Column(name="ProjectStatus", type="string", length=50, nullable=true)
+     * @Expose
      */
     private $projectStatus;
 
@@ -84,6 +100,7 @@ class Project
      * @var \DateTime
      *
      * @ORM\Column(name="CreatedAt", type="datetime", nullable=true)
+     * @Expose
      */
     private $createdAt;
 
@@ -91,6 +108,7 @@ class Project
      * @var \DateTime
      *
      * @ORM\Column(name="UpdatedAt", type="datetime", nullable=true)
+     * @Expose
      */
     private $updatedAt;
 
@@ -236,12 +254,13 @@ class Project
      * Set createdAt
      *
      * @param \DateTime $createdAt
+     * @ORM\PrePersist
      *
      * @return Project
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new \DateTime('now');
 
         return $this;
     }
@@ -260,12 +279,14 @@ class Project
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     * @ORM\PrePersist
+     * @ORM\PostPersist
      *
      * @return Project
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = new \DateTime('now');
 
         return $this;
     }
@@ -367,5 +388,29 @@ class Project
     public function getPatientDetail()
     {
         return $this->patientDetail;
+    }
+
+    /**
+     * Set projectStatus
+     *
+     * @param string $projectStatus
+     *
+     * @return Project
+     */
+    public function setProjectStatus($projectStatus)
+    {
+        $this->projectStatus = $projectStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get projectStatus
+     *
+     * @return string
+     */
+    public function getProjectStatus()
+    {
+        return $this->projectStatus;
     }
 }

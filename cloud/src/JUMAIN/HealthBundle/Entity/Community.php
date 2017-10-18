@@ -3,14 +3,20 @@
 namespace JUMAIN\HealthBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\SerializerBundle\Annotation\ExclusionPolicy;
-use JMS\SerializerBundle\Annotation\Expose;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Groups;
+use JMS\Serializer\Annotation\VirtualProperty;
 
 /**
  * Community
  *
  * @ORM\Table(name="community")
  * @ORM\Entity(repositoryClass="JUMAIN\HealthBundle\Repository\CommunityRepository")
+ *
+ * @ORM\HasLifecycleCallbacks
+ *
+ * @ExclusionPolicy("all")
  */
 class Community
 {
@@ -20,6 +26,7 @@ class Community
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     * @Expose
      */
     private $id;
 
@@ -27,6 +34,7 @@ class Community
      * @var string
      *
      * @ORM\Column(name="CommunityName", type="string", length=255, nullable=true)
+     * @Expose
      */
     private $communityName;
 
@@ -34,6 +42,7 @@ class Community
      * @var int
      *
      * @ORM\Column(name="MaleAbv10", type="integer", nullable=true)
+     * @Expose
      */
     private $maleAbv10;
 
@@ -41,6 +50,7 @@ class Community
      * @var int
      *
      * @ORM\Column(name="FemBtw10N15", type="integer", nullable=true)
+     * @Expose
      */
     private $femBtw10N15;
 
@@ -48,6 +58,7 @@ class Community
      * @var int
      *
      * @ORM\Column(name="ChildBel10", type="integer", nullable=true)
+     * @Expose
      */
     private $childBel10;
 
@@ -55,6 +66,7 @@ class Community
      * @var int
      *
      * @ORM\Column(name="FemAbv15", type="integer", nullable=true)
+     * @Expose
      */
     private $femAbv15;
 
@@ -62,11 +74,13 @@ class Community
      * @var bool
      *
      * @ORM\Column(name="current", type="boolean", nullable=true)
+     * @Expose
      */
     private $current;
 
     /**
      * @ORM\OneToMany(targetEntity="Project", mappedBy="community")
+     * @Expose
      *
      */
     private $project;
@@ -75,6 +89,7 @@ class Community
      * @var \DateTime
      *
      * @ORM\Column(name="CreatedAt", type="datetime")
+     * @Expose
      */
     private $createdAt;
 
@@ -82,6 +97,7 @@ class Community
      * @var \DateTime
      *
      * @ORM\Column(name="UpdatedAt", type="datetime", nullable=true)
+     * @Expose
      */
     private $updatedAt;
 
@@ -251,12 +267,13 @@ class Community
      * Set createdAt
      *
      * @param \DateTime $createdAt
+     * @ORM\PrePersist
      *
      * @return Community
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt()
     {
-        $this->createdAt = $createdAt;
+        $this->createdAt = new \DateTime('now');
 
         return $this;
     }
@@ -275,12 +292,14 @@ class Community
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     * @ORM\PrePersist
+     * @ORM\PostPersist
      *
      * @return Community
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = new \DateTime('now');
 
         return $this;
     }

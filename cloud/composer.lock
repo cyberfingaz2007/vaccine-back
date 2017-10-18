@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9dd0b582e0717bd0ea37409e711dfe8",
+    "content-hash": "34567be197b50d689c653da544e2d02f",
     "packages": [
         {
             "name": "alchemy/binary-driver",
@@ -501,7 +501,7 @@
             "keywords": [
                 "database"
             ],
-            "time": "2017-02-23 18:10:32"
+            "time": "2017-02-23T18:10:32+00:00"
         },
         {
             "name": "doctrine/dbal",
@@ -744,63 +744,6 @@
             "time": "2016-01-26T17:28:51+00:00"
         },
         {
-            "name": "doctrine/doctrine-fixtures-bundle",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-                "reference": "fb060e289a2996e21869c261a983c0f8450132f6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/fb060e289a2996e21869c261a983c0f8450132f6",
-                "reference": "fb060e289a2996e21869c261a983c0f8450132f6",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/data-fixtures": "~1.0",
-                "doctrine/doctrine-bundle": "~1.0",
-                "php": ">=5.3.2",
-                "symfony/doctrine-bridge": "~2.3|~3.0"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.2.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Doctrine\\Bundle\\FixturesBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Symfony Community",
-                    "homepage": "http://symfony.com/contributors"
-                },
-                {
-                    "name": "Doctrine Project",
-                    "homepage": "http://www.doctrine-project.org"
-                },
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Symfony DoctrineFixturesBundle",
-            "homepage": "http://www.doctrine-project.org",
-            "keywords": [
-                "Fixture",
-                "persistence"
-            ],
-            "time": "2016-10-13 13:56:07"
-        },
-        {
             "name": "doctrine/doctrine-migrations-bundle",
             "version": "dev-master",
             "source": {
@@ -859,7 +802,7 @@
                 "migrations",
                 "schema"
             ],
-            "time": "2016-12-05 18:36:37"
+            "time": "2016-12-05T18:36:37+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -1108,7 +1051,7 @@
                 "database",
                 "migrations"
             ],
-            "time": "2017-03-20 10:05:01"
+            "time": "2017-03-20T10:05:01+00:00"
         },
         {
             "name": "doctrine/orm",
@@ -1538,7 +1481,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2017-04-06 12:55:03"
+            "time": "2017-04-06T12:55:03+00:00"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -1615,7 +1558,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2017-04-12 08:32:08"
+            "time": "2017-04-12T08:32:08+00:00"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1886,7 +1829,7 @@
                 "random-numbers",
                 "random-strings"
             ],
-            "time": "2016-09-07 15:52:06"
+            "time": "2016-09-07T15:52:06+00:00"
         },
         {
             "name": "ircmaxell/security-lib",
@@ -2197,7 +2140,7 @@
                 "xml",
                 "yaml"
             ],
-            "time": "2016-12-08 08:40:05"
+            "time": "2016-12-08T08:40:05+00:00"
         },
         {
             "name": "jms/parser-lib",
@@ -2232,7 +2175,7 @@
                 "Apache2"
             ],
             "description": "A library for easily creating recursive-descent parsers.",
-            "time": "2014-07-08 16:40:41"
+            "time": "2014-07-08T16:40:41+00:00"
         },
         {
             "name": "jms/security-extra-bundle",
@@ -2570,7 +2513,7 @@
                 "pdf",
                 "snappy"
             ],
-            "time": "2017-02-16 10:25:45"
+            "time": "2017-02-16T10:25:45+00:00"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -2851,7 +2794,7 @@
                 "excel",
                 "xls"
             ],
-            "time": "2017-03-02 16:10:21"
+            "time": "2017-03-02T16:10:21+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -2916,7 +2859,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2017-04-07 09:06:30"
+            "time": "2017-04-07T09:06:30+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3696,7 +3639,7 @@
                 "php",
                 "type"
             ],
-            "time": "2015-07-25 16:39:46"
+            "time": "2015-07-25T16:39:46+00:00"
         },
         {
             "name": "phpspec/prophecy",
@@ -4293,7 +4236,7 @@
                 "User management",
                 "multi user management"
             ],
-            "time": "2016-11-02 08:35:04"
+            "time": "2016-11-02T08:35:04+00:00"
         },
         {
             "name": "ruflin/elastica",
@@ -5006,7 +4949,7 @@
                 "translatable",
                 "tree"
             ],
-            "time": "2017-01-13 18:32:32"
+            "time": "2017-01-13T18:32:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -5950,7 +5893,7 @@
                 "i18n",
                 "text"
             ],
-            "time": "2017-01-09 14:44:40"
+            "time": "2017-01-09T14:44:40+00:00"
         },
         {
             "name": "twig/twig",
@@ -6096,7 +6039,7 @@
                 "file uploads",
                 "upload"
             ],
-            "time": "2016-12-31 15:11:22"
+            "time": "2016-12-31T15:11:22+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -6348,6 +6291,63 @@
         }
     ],
     "packages-dev": [
+        {
+            "name": "doctrine/doctrine-fixtures-bundle",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
+                "reference": "7bb198c044b798b54e6be37c7929339aa645c3bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/7bb198c044b798b54e6be37c7929339aa645c3bf",
+                "reference": "7bb198c044b798b54e6be37c7929339aa645c3bf",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/data-fixtures": "~1.0",
+                "doctrine/doctrine-bundle": "~1.0",
+                "php": ">=5.3.2",
+                "symfony/doctrine-bridge": "~2.7|~3.0|~4.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Doctrine\\Bundle\\FixturesBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Doctrine Project",
+                    "homepage": "http://www.doctrine-project.org"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony DoctrineFixturesBundle",
+            "homepage": "http://www.doctrine-project.org",
+            "keywords": [
+                "Fixture",
+                "persistence"
+            ],
+            "time": "2017-09-10T23:22:01+00:00"
+        },
         {
             "name": "friendsofsymfony/http-cache",
             "version": "1.4.2",
@@ -7118,7 +7118,6 @@
         "jms/di-extra-bundle": 20,
         "jms/serializer-bundle": 20,
         "knplabs/knp-snappy-bundle": 20,
-        "doctrine/doctrine-fixtures-bundle": 20,
         "doctrine/data-fixtures": 20,
         "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
