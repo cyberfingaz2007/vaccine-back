@@ -29,13 +29,9 @@ class AppKernel extends Kernel
             new JMS\SerializerBundle\JMSSerializerBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
             new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
-            //new FOS\OAuthServerBundle\FOSOAuthServerBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
             new FOS\RestBundle\FOSRestBundle(),
-            new FOS\HttpCacheBundle\FOSHttpCacheBundle(),
             new Nelmio\CorsBundle\NelmioCorsBundle(),
-            //new Vich\UploaderBundle\VichUploaderBundle(),
-            //new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             
         );
 
