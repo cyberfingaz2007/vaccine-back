@@ -106,14 +106,14 @@ class PatientRepository extends \Doctrine\ORM\EntityRepository
   }
 
   public function getNumOfPatientsVaccByProjectByDate(Project $project, $dateValue){
-    $realDate = new  \DateTime($dateValue);
+    //$realDate = new  \DateTime($dateValue);
 
     $numPatients = $this->getEntityManager()
                     ->createQuery(
                     'SELECT COUNT(p.id) FROM JUMAINHealthBundle:Patient p LEFT JOIN p.detail a
                     WHERE (( a.project = :projVal) AND (a.vaccinationStatus = :statVal) AND (a.vaccinationDate = :dateVal))
                     ORDER BY a.vaccinationDate ASC ')
-                    ->setParameters(array('projVal' => $project,'statVal' => 'done','dateVal' => $realDate))
+                    ->setParameters(array('projVal' => $project,'statVal' => 'done','dateVal' => $dateValue))
                     ->getSingleScalarResult();
     return $numPatients;
   }

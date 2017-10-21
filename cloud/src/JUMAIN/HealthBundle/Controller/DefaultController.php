@@ -216,23 +216,23 @@ class DefaultController extends FOSRestController
         $detail = new MedicalDetail();
         $project = new Project();
 
-        $data = $request->request->get('dataBag');
+        //$data = $request->request->get('dataBag');
 
-        $id = $data['project'];
+        $id = $request->request->get('project');
 
         $em = $this->getDoctrine()->getManager();
 
         $project = $em->getRepository('JUMAINHealthBundle:Project')->find($id);
 
-        $patient->setFullName($data['fullName']);
-        $patient->setSex($data['sex']);
-        $patient->setDateOfBirth($data['dob']);
-        $patient->setResidence($data['residence']);
+        $patient->setFullName($request->request->get('fullName'));
+        $patient->setSex($request->request->get('sex'));
+        $patient->setDateOfBirth(date_create($request->request->get('dob')));
+        $patient->setResidence($request->request->get('residence'));
 
-        $detail->setVaccinationStatus($vaccinationStatus);
-        $detail->setVaccinationDate($vaccinationDate);
-        $detail->setEmployeeName($employeeName);
-        $detail->setDescription($description);
+        $detail->setVaccinationStatus($request->request->get('vacStatus'));
+        $detail->setVaccinationDate(date_create($request->request->get('vacDate')));
+        $detail->setEmployeeName($request->request->get('employee'));
+        $detail->setDescription($request->request->get('description'));
         $detail->setCurrent(true);
         $detail->setPatient($patient);
         $detail->setProject($project);
@@ -277,17 +277,19 @@ class DefaultController extends FOSRestController
 
         $em = $this->getDoctrine()->getManager();
         
-        $data = $request->request->get('dataBag');
+        //$data = $request->request->get('dataBag');
 
-        $community->setCommunityName($data['communityName']);
-        $community->setMaleAbv10($data['maleAbv10']);
-        $community->setFemBtw10N15($data['femBtw10N15']);
-        $community->setChildBel10($data['childBel10']);
-        $community->setFemAbv15($data['femAbv15']);
+        $community->setCommunityName($request->request->get('communityName'));
+        $community->setMaleAbv10($request->request->get('maleAbv10'));
+        $community->setFemBtw10N15($request->request->get('femBtw10N15'));
+        $community->setChildBel10($request->request->get('childBel10'));
+        $community->setFemAbv15($request->request->get('femAbv15'));
         $community->setCurrent(true);
 
         $em->persist($community);
         $em->flush();
+
+        $data = array("msg" => "Submitted", "status" => true);
 
         $view = $this->view($data);
 
@@ -312,20 +314,29 @@ class DefaultController extends FOSRestController
     public function postNewProjectAction(Request $request)
     {
         $project = new Project();
+        $community = new Community();
 
         $em = $this->getDoctrine()->getManager();
-        
-        $data = $request->request->get('dataBag');
 
-        $project->setCommunityName($data['communityName']);
-        $project->setMaleAbv10($data['maleAbv10']);
-        $project->setFemBtw10N15($data['femBtw10N15']);
-        $project->setChildBel10($data['childBel10']);
-        $project->setFemAbv15($data['femAbv15']);
-        $project->setCurrent(true);
+        $id = $request->request->get('community');
+
+        $community = $em->getRepository('JUMAINHealthBundle:Community')->find($id);
+        
+        //$data = $request->request->get('dataBag');
+
+        $project->setProjectName($request->request->get('projectName'));
+        $project->setDescription($request->request->get('description'));
+        $project->setNumOfFieldWorkers($request->request->get('numOfFieldWorkers'));
+        $project->setTimeSpan($request->request->get('timeSpan'));
+        $project->setBudget($request->request->get('budget'));
+        $project->setCommunity($community);
+        $project->setProjectStrtDate(date_create($request->request->get('projectStrtDate')));
+        $project->setProjectStatus($request->request->get('status'));
 
         $em->persist($project);
         $em->flush();
+
+        $data = array("msg" => "Submitted", "status" => true);
 
         $view = $this->view($data);
 
@@ -402,7 +413,7 @@ class DefaultController extends FOSRestController
         $em = $this->getDoctrine()->getManager();
 
         $numVacc = $em->getRepository('JUMAINHealthBundle:Patient')
-                ->getNumOfPatientsVaccByProject($project, $dateValue);
+                ->getNumOfPatientsVaccByProjectByDate($project, $dateValue);
 
         return $numVacc;
     }
