@@ -157,16 +157,6 @@ doctrine_migrations:
         table_name: migration_versions
         name: Application Migrations
 
-fos_http_cache:
-#    cache_control:
-#        rules:
-#            - { path: /, controls: { public: true, max_age: 15, s_maxage: 30, last_modified: "-1 hour" } }
-#    proxy_client:
-#        varnish:
-#            base_url: http://symfony-standard.lo
-#            servers: 10.0.0.10:80, 10.0.0.11:80 # comma separated list of ips/ports, or an array of ips/ports
-    flash_message: false
-
 # Nelmio CORS Configuration
 nelmio_cors:
     defaults:
