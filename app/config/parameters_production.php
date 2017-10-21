@@ -13,3 +13,4 @@
     $container->setParameter('mailer_host', null);
     $container->setParameter('mailer_user', null);
     $container->setParameter('mailer_password', null);
+    $container->setParameter('jwt_key_pass_phrase', 'telemax');
