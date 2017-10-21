@@ -18,4 +18,13 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
                     ->getResult();
     return $projects;
   }
+
+  public function getNumOfProjects(){
+    $numProjects = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT COUNT(p.id) FROM JUMAINHealthBundle:Project p
+                    ORDER BY p.projectName ASC ')
+                    ->getSingleScalarResult();
+    return $numProjects;
+  }
 }

@@ -2,6 +2,8 @@
 
 namespace JUMAIN\HealthBundle\Repository;
 
+use JUMAIN\HealthBundle\Entity\Project;
+
 /**
  * PatientRepository
  *
@@ -57,4 +59,86 @@ class PatientRepository extends \Doctrine\ORM\EntityRepository
                     ->getResult();
     return $patients;
   }
+
+  public function getNumOfPatientsByProject(Project $project){
+    
+    $numPatients = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT COUNT(p.id) FROM JUMAINHealthBundle:Patient p LEFT JOIN p.detail a
+                    WHERE ( a.project = :projVal)
+                    ORDER BY a.vaccinationDate ASC ')
+                    ->setParameters(array('projVal' => $project,))
+                    ->getSingleScalarResult();
+    return $numPatients;
+  }
+
+  public function getNumOfPatients(){
+    
+    $numPatients = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT COUNT(p.id) FROM JUMAINHealthBundle:Patient p LEFT JOIN p.detail a')
+                    ->getSingleScalarResult();
+    return $numPatients;
+  }
+
+  public function getNumOfAllPatientsVacc(){
+    
+    $numPatients = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT COUNT(p.id) FROM JUMAINHealthBundle:Patient p LEFT JOIN p.detail a
+                    WHERE (a.vaccinationStatus = :statVal)
+                    ORDER BY a.vaccinationDate ASC ')
+                    ->setParameters(array('statVal' => 'done'))
+                    ->getSingleScalarResult();
+    return $numPatients;
+  }
+
+  public function getNumOfPatientsVaccByProject(Project $project){
+    
+    $numPatients = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT COUNT(p.id) FROM JUMAINHealthBundle:Patient p LEFT JOIN p.detail a
+                    WHERE (( a.project = :projVal) AND (a.vaccinationStatus = :statVal))
+                    ORDER BY a.vaccinationDate ASC ')
+                    ->setParameters(array('projVal' => $project,'statVal' => 'done'))
+                    ->getSingleScalarResult();
+    return $numPatients;
+  }
+
+  public function getNumOfPatientsVaccByProjectByDate(Project $project, $dateValue){
+    $realDate = new  \DateTime($dateValue);
+
+    $numPatients = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT COUNT(p.id) FROM JUMAINHealthBundle:Patient p LEFT JOIN p.detail a
+                    WHERE (( a.project = :projVal) AND (a.vaccinationStatus = :statVal) AND (a.vaccinationDate = :dateVal))
+                    ORDER BY a.vaccinationDate ASC ')
+                    ->setParameters(array('projVal' => $project,'statVal' => 'done','dateVal' => $realDate))
+                    ->getSingleScalarResult();
+    return $numPatients;
+  }
+
+  public function findAllRecRegPatients(){
+    $patients = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT p FROM JUMAINHealthBundle:Patient p
+                    ORDER BY p.createdAt DESC ')
+                    ->setMaxResults(10)
+                    ->getResult();
+    return $patients;
+  }
+
+  public function getNumOfHealthyPatientsByProjectByDate(Project $project, $dateValue){
+    //$realDate = new  \DateTime($dateValue);
+
+    $numPatients = $this->getEntityManager()
+                    ->createQuery(
+                    'SELECT COUNT(p.id) FROM JUMAINHealthBundle:Patient p LEFT JOIN p.detail a
+                    WHERE (( a.project = :projVal) AND (a.healthStatus = :statVal) AND (a.vaccinationDate <= :dateVal))
+                    ORDER BY a.vaccinationDate ASC ')
+                    ->setParameters(array('projVal' => $project,'statVal' => 'healthy','dateVal' => $dateValue))
+                    ->getSingleScalarResult();
+    return $numPatients;
+  }
+
 }

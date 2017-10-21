@@ -7,6 +7,7 @@ use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 use JMS\Serializer\Annotation\Groups;
 use JMS\Serializer\Annotation\VirtualProperty;
+use \DateTime;
 
 /**
  * Patient
@@ -57,7 +58,7 @@ class Patient
     /**
      * @var string
      *
-     * @ORM\Column(name="UniqueNumber", type="string", length=255, unique=true)
+     * @ORM\Column(name="UniqueNumber", type="string", length=255, nullable=true)
      * @Expose
      */
     private $uniqueNumber;
@@ -186,21 +187,26 @@ class Patient
      * Set uniqueNumber
      *
      * @param string $uniqueNumber
+     *
      * @ORM\PrePersist
      *
      * @return Patient
      */
-    private function setUniqueNumber()
+    public function setUniqueNumber()
     {
-        $today = new \DateTime('now');
+        //DateTime::createFromFormat('U.u', microtime(TRUE));
+        //$today = new \DateTime("now");
+        $today = DateTime::createFromFormat('U.u', microtime(TRUE));
         $yr = $today->format('Y');
         $mth = $today->format('m');
         $dy = $today->format('d');
         $hr = $today->format('H');
         $min = $today->format('i');
         $secs = $today->format('s');
+        $msecs = $today->format('u');
+        
 
-        $uniqueNumber = "jum_vacc_" . $yr . $mth . $dy . $hr . $min . $secs;
+        $uniqueNumber = "jum_vacc_" . $yr . $mth . $dy . $hr . $min . $secs . $msecs;
 
         $this->uniqueNumber = $uniqueNumber;
 
@@ -270,12 +276,14 @@ class Patient
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     * @ORM\PrePersist
+     * @ORM\PostUpdate
      *
      * @return Patient
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = new \DateTime('now');
 
         return $this;
     }

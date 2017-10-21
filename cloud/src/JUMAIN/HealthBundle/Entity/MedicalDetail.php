@@ -49,7 +49,7 @@ class MedicalDetail
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="VaccinationDate", type="datetime", nullable=true)
+     * @ORM\Column(name="VaccinationDate", type="date", nullable=true)
      * @Expose
      */
     private $vaccinationDate;
@@ -69,6 +69,14 @@ class MedicalDetail
      * @Expose
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="HealthStatus", type="string", length=50, nullable=true)
+     * @Expose
+     */
+    private $healthStatus;
 
     /**
      * @var int
@@ -329,5 +337,29 @@ class MedicalDetail
     public function getProject()
     {
         return $this->project;
+    }
+
+    /**
+     * Set healthStatus
+     *
+     * @param string $healthStatus
+     *
+     * @return MedicalDetail
+     */
+    public function setHealthStatus($healthStatus)
+    {
+        $this->healthStatus = $healthStatus;
+
+        return $this;
+    }
+
+    /**
+     * Get healthStatus
+     *
+     * @return string
+     */
+    public function getHealthStatus()
+    {
+        return $this->healthStatus;
     }
 }

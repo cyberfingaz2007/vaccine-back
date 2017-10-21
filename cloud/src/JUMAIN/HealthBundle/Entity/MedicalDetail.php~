@@ -71,6 +71,14 @@ class MedicalDetail
     private $description;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="HealthStatus", type="string", length=50, nullable=true)
+     * @Expose
+     */
+    private $healthStatus;
+
+    /**
      * @var int
      *
      * @ORM\ManyToOne(targetEntity="Project", inversedBy="patientDetail", cascade={"persist"})
@@ -261,12 +269,14 @@ class MedicalDetail
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     * @ORM\PrePersist
+     * @ORM\PostPersist
      *
      * @return MedicalDetail
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = new \DateTime('now');
 
         return $this;
     }

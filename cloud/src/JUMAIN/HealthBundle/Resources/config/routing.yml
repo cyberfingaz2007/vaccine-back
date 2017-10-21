@@ -3,6 +3,116 @@ jumain_health_homepage:
     defaults: { _controller: JUMAINHealthBundle:Default:index }
     methods:   [GET]
 
+
+# ########### #################### Dashboard services ############## ############## #############
+jumain_health_num_all_tot_vacc:
+    path:     /NumAllTotVacc
+    defaults: { _controller: JUMAINHealthBundle:Default:getNumAllTotalVaccinated }
+    methods:   [GET]
+
+jumain_health_num_all_patients:
+    path:     /NumAllPatient
+    defaults: { _controller: JUMAINHealthBundle:Default:getNumAllPatients }
+    methods:   [GET]
+
+jumain_health_num_completed_projects:
+    path:     /NumCompProjects
+    defaults: { _controller: JUMAINHealthBundle:Default:getNumCompProjects }
+    methods:   [GET]
+
+jumain_health_num_projects:
+    path:     /NumProjects
+    defaults: { _controller: JUMAINHealthBundle:Default:getNumProjects }
+    methods:   [GET]
+
+jumain_health_rec_added:
+    path:     /RecAddPatients
+    defaults: { _controller: JUMAINHealthBundle:Default:getRecentlyAddedPatients }
+    methods:   [GET]
+
+jumain_health_projects_comp_status:
+    path:     /ProjectsCompStats
+    defaults: { _controller: JUMAINHealthBundle:Default:getProjectCompletionStats }
+    methods:   [GET]
+
+jumain_health_project_impact:
+    path:     /ProjectImpact/{projectId}
+    defaults: { _controller: JUMAINHealthBundle:Default:getProjectImpact, projectId: 1 }
+    methods:   [GET]
+
+########### #################### End Dashboard services ############## ############## #############
+
+
+# ########### #################### Patients services ############## ############## #############
+jumain_health_new_patient:
+    path:     /new-patient
+    defaults: { _controller: JUMAINHealthBundle:Default:postNewPatient }
+    methods:   [POST]
+
+jumain_health_all_patients:
+    path:     /all-patients
+    defaults: { _controller: JUMAINHealthBundle:Default:getAllPatients }
+    methods:   [GET]
+
+########### #################### End Patients services ############## ############## #############
+
+# ########### #################### Communities services ############## ############## #############
+jumain_health_new_community:
+    path:     /new-community
+    defaults: { _controller: JUMAINHealthBundle:Default:postNewCommunity }
+    methods:   [POST]
+
+jumain_health_all_communities:
+    path:     /all-communities
+    defaults: { _controller: JUMAINHealthBundle:Default:getAllCommunities }
+    methods:   [GET]
+
+########### #################### End Communities services ############## ############## #############
+
+
+# ########### #################### Projects services ############## ############## #############
+jumain_health_new_project:
+    path:     /new-project
+    defaults: { _controller: JUMAINHealthBundle:Default:postNewProject }
+    methods:   [POST]
+
+jumain_health_all_projects:
+    path:     /all-projects
+    defaults: { _controller: JUMAINHealthBundle:Default:getAllProjects }
+    methods:   [GET]
+
+
+########### #################### End Projects services ############## ############## #############
+
+# ########### #################### Reports services ############## ############## #############
+jumain_health_chart_vacc_projects:
+    path:     /AllNumVaccByProj
+    defaults: { _controller: JUMAINHealthBundle:Default:getAllVaccForProjects }
+    methods:   [GET]
+
+jumain_health_chart_vacc_projects_by_date:
+    path:     /NumVaccByProjByDate/{dateValue}
+    defaults: { _controller: JUMAINHealthBundle:Default:getVaccForProjectsByDate }
+    methods:   [GET]
+
+jumain_health_tot_vacc_by_proj:
+    path:     /TotVacc/{projectId}
+    defaults: { _controller: JUMAINHealthBundle:Default:getTotalVaccinated, projectId: 1 }
+    methods:   [GET]
+
+jumain_health_tot_budget_spent_by_project:
+    path:     /TotBudgetSpnt/{projectId}
+    defaults: { _controller: JUMAINHealthBundle:Default:getTotalBudgetSpent, projectId: 1 }
+    methods:   [GET]
+
+jumain_health_project_time_used:
+    path:     /TotTimeUsed/{projectId}
+    defaults: { _controller: JUMAINHealthBundle:Default:getTotalTimeUsed, projectId: 1 }
+    methods:   [GET]
+
+########### #################### End Reports services ############## ############## #############
+
+# ########### #################### Other services ############## ############## #############
 jumain_health_child_entered_by_date:
     path:     /ChldEntrdByDate/{dateValue}
     defaults: { _controller: JUMAINHealthBundle:Default:getChildEnteredByDate }
@@ -18,47 +128,26 @@ jumain_health_tot_num_child_entered_till_date:
     defaults: { _controller: JUMAINHealthBundle:Default:getTotNumChildEnteredTillDate }
     methods:   [GET]
 
-jumain_health_tot_vacc:
-    path:     /TotVacc
-    defaults: { _controller: JUMAINHealthBundle:Default:getTotalVaccinated }
+
+
+jumain_health_tot_vacc_till_date:
+    path:     /TotVaccTillDate/{projectId}/{dateValue}
+    defaults: { _controller: JUMAINHealthBundle:Default:getTotalVaccinatedTillDate, projectId: 1 }
     methods:   [GET]
 
-jumain_health_tot_budget_spent:
-    path:     /TotBudgetSpnt
-    defaults: { _controller: JUMAINHealthBundle:Default:getTotalBudgetSpent }
+
+jumain_health_tot_budget_spent_till_date:
+    path:     /TotBudgetSpntTillDate/{projectId}/{dateValue}
+    defaults: { _controller: JUMAINHealthBundle:Default:getTotalBudgetSpentTillDate, projectId: 1 }
     methods:   [GET]
 
-jumain_health_tot_project_time_elapsed:
-    path:     /TotTimeElapsed
-    defaults: { _controller: JUMAINHealthBundle:Default:getTotalTimeElapsed }
+
+jumain_health_project_time_used_till_date:
+    path:     /TotTimeUsedTillDate/{projectId}/{dateValue}
+    defaults: { _controller: JUMAINHealthBundle:Default:getTotalTimeUsedTillDate, projectId: 1 }
     methods:   [GET]
 
-jumain_health_new_patient:
-    path:     /new-patient
-    defaults: { _controller: JUMAINHealthBundle:Default:postNewPatient }
-    methods:   [POST]
-
-jumain_health_all_patients:
-    path:     /all-patients
-    defaults: { _controller: JUMAINHealthBundle:Default:getAllPatients }
-    methods:   [GET]
-
-jumain_health_new_project:
-    path:     /new-project
-    defaults: { _controller: JUMAINHealthBundle:Default:postNewProject }
-    methods:   [POST]
-
-jumain_health_all_projects:
-    path:     /all-projects
-    defaults: { _controller: JUMAINHealthBundle:Default:getAllProjects }
-    methods:   [GET]
-
-jumain_health_new_community:
-    path:     /new-community
-    defaults: { _controller: JUMAINHealthBundle:Default:postNewCommunity }
-    methods:   [POST]
-
-jumain_health_all_communities:
-    path:     /all-communities
-    defaults: { _controller: JUMAINHealthBundle:Default:getAllCommunities }
+jumain_health_project_completion:
+    path:     /ProjCompStat/{projectId}
+    defaults: { _controller: JUMAINHealthBundle:Default:getProjectCompStatus, projectId: 1 }
     methods:   [GET]

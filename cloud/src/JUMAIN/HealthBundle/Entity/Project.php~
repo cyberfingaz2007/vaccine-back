@@ -51,6 +51,8 @@ class Project
      *
      * @ORM\ManyToOne(targetEntity="Community", inversedBy="project", cascade={"persist"})
      * @ORM\JoinColumn(name="CommunityID", referencedColumnName="id", nullable=true)
+     *
+     * @Expose
      */
     private $community;
 
@@ -277,12 +279,14 @@ class Project
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     * @ORM\PrePersist
+     * @ORM\PostPersist
      *
      * @return Project
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = new \DateTime('now');
 
         return $this;
     }

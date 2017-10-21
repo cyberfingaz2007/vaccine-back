@@ -83,7 +83,7 @@ class Project
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="ProjectStrtDate", type="datetime", nullable=true)
+     * @ORM\Column(name="ProjectStrtDate", type="date", nullable=true)
      * @Expose
      */
     private $projectStrtDate;

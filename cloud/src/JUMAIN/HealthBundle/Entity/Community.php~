@@ -292,12 +292,14 @@ class Community
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
+     * @ORM\PrePersist
+     * @ORM\PostPersist
      *
      * @return Community
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt()
     {
-        $this->updatedAt = $updatedAt;
+        $this->updatedAt = new \DateTime('now');
 
         return $this;
     }
