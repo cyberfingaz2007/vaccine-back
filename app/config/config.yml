@@ -230,7 +230,7 @@ lexik_jwt_authentication:
 fos_user:
       db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
       from_email:
-          address: "%mailer_user%"
+          address: "JUMAIN"
           sender_name: "Community Health"
       firewall_name: admin_secured_area
       user_class: JUMAIN\AdminBundle\Entity\User
